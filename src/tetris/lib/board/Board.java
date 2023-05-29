@@ -48,7 +48,7 @@ public final class Board extends BlockMatrix {
     }
 
     /**
-     * Construtor cópia.
+     * Construtor cópia. 
      *
      * @param board board
      */
