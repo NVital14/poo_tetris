@@ -58,6 +58,11 @@ public class Nivel extends javax.swing.JFrame {
         jToggleButton2.setText("jToggleButton2");
 
         jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jToggleButton3.setText("jToggleButton3");
 
@@ -133,6 +138,10 @@ public class Nivel extends javax.swing.JFrame {
         t.show();
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
