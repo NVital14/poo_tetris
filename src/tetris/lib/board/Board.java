@@ -25,7 +25,7 @@ import tetris.lib.pieces.PieceZ;
 public final class Board extends BlockMatrix {
 
     /**
-     * Peça que está no tabuleiro e a dificuldade do jogo.
+     * Peça que está no tabuleiro e a  dificuldade do jogo.
      *
      */
     private Piece current;
