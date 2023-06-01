@@ -22,13 +22,13 @@ import tetris.lib.pieces.PieceZ;
  *
  * @author vital
  */
-public final class Board extends BlockMatrix {
+public  class Board extends BlockMatrix {
 
     /**
      * Peça que está no tabuleiro e a dificuldade do jogo.
      *
      */
-    private Piece current;
+    protected Piece current;
     private Difficulty level;
 
     /**
@@ -230,18 +230,20 @@ public final class Board extends BlockMatrix {
      * Fixar a peça currente no tabuleiro
      */
     public void freezePiece() {
-        //iterar os blocos da peça current
+         //iterar os blocos da peça current
         for (int y = 0; y < current.getLines(); y++) {
             for (int x = 0; x < current.getColumns(); x++) {
                 //verificar se é vazio
                 if (current.getMatrix()[y][x] instanceof Empty) {
                     continue;
                 }
+                System.out.println(current.getMatrix()[y][x].toString());
                 //colocar um clone da peça na matriz
                 matrix[current.getLine() + y][current.getColumn() + x]
                         = current.getMatrix()[y][x].getClone();
             }
         }
+        
     }
 
     @Override
@@ -387,19 +389,19 @@ public final class Board extends BlockMatrix {
 
     @Override
     public void paintComponent(Graphics g) {
-        draw(g, 0, 0, getWidth(), getHeight());
+        draw(g, 0, 0, getWidth(), getHeight(), true);
     }
 
     @Override
-    public void draw(Graphics gr, int px, int py, int width, int height) {
-        super.draw(gr, px, py, width, height);
+    public void draw(Graphics gr, int px, int py, int width, int height, boolean paintEmpties) {
+        super.draw(gr, px, py, width, height, paintEmpties);
         int sizeX = width / getColumns();
         int sizeY = height / getLines();
         if (current != null) {
             current.draw(gr, px + current.getColumn() * sizeX, 
                              py + current.getLine()* sizeY, 
                              sizeX * current.getColumns(), 
-                             sizeY * current.getLines());
+                             sizeY * current.getLines(), false);
         }
     }
     

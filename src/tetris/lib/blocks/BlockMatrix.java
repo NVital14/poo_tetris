@@ -35,21 +35,25 @@ public class BlockMatrix extends JPanel implements Drawable {
     public BlockMatrix(BlockMatrix blockMat) {
         this(blockMat.matrix);
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        draw(g, 0, 0, getWidth(), getHeight());
+        draw(g, 0, 0, getWidth(), getHeight(), true);
     }
-    
+
     @Override
-    public void draw(Graphics gr, int px, int py, int width, int height) {
+    public void draw(Graphics gr, int px, int py, int width, int height, boolean paintEmpties) {
         int sizeX = width / getColumns();
         int sizeY = height / getLines();
         for (int y = 0; y < getLines(); y++) {
             for (int x = 0; x < getColumns(); x++) {
-                if (!(matrix[y][x] instanceof Empty))
-                matrix[y][x].draw(gr, px + x * sizeX, py + y * sizeY, sizeX, sizeY);
+                if(!paintEmpties && matrix[y][x] instanceof Empty){
+                    continue;
+                }
+                
+                matrix[y][x].draw(gr, px + x * sizeX, py + y * sizeY, sizeX,
+                        sizeY);
             }
         }
     }
@@ -70,22 +74,23 @@ public class BlockMatrix extends JPanel implements Drawable {
 
         Block[][] aux = new Block[getColumns()][getLines()];
         //transposta
-        for(int l = 0; l < getLines(); l++)
-            for(int c = 0; c < getColumns(); c++)
+        for (int l = 0; l < getLines(); l++) {
+            for (int c = 0; c < getColumns(); c++) {
                 aux[c][l] = matrix[l][c];
+            }
+        }
         //espelhar
         int laux = aux.length;
         int caux = aux[0].length;
-        for(int l = 0; l < laux; l++){
-            for(int c = 0;c < caux/2; c++){
+        for (int l = 0; l < laux; l++) {
+            for (int c = 0; c < caux / 2; c++) {
                 Block temp = aux[l][c];
-                aux[l][c] = aux[l][caux-c-1];
-                aux[l][caux-c-1] = temp;
+                aux[l][c] = aux[l][caux - c - 1];
+                aux[l][caux - c - 1] = temp;
             }
 
         }
-            
-        
+
         matrix = aux;
     }
 
@@ -96,9 +101,9 @@ public class BlockMatrix extends JPanel implements Drawable {
         for (int i = 0; i < getLines(); i++) {
             for (int j = 0; j < getColumns(); j++) {
                 str.append(matrix[i][j]);
-               
+
             }
-             str.append("\n");
+            str.append("\n");
         }
         return str.toString();
 

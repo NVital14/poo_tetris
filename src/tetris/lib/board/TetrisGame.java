@@ -5,20 +5,54 @@
 package tetris.lib.board;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
  * @author vital
  */
-public class TetrisGame extends board{
-    /**
-     * Linhas completas de blocos e tempo
-     */
-    private int completedLines;
-    private Timer time;
-    
-    public TetrisGame(int lines, int columns){
-        
+public final class TetrisGame extends Board {
+
+    Timer timer;
+
+    public TetrisGame() {
+        super();
+        timer = new Timer();
+        startGame(50);
     }
-    
+
+    public void startGame(int delay) {
+        timer.schedule(new MoveGame(), 0, delay);
+    }
+
+    public void stopGame() {
+        timer.cancel();
+        //.........
+
+    }
+
+    public boolean isGameOVer() {
+        return current.getLine() == 0 //esta no top
+                && !canMovePiece(1, 0); //não pode descer
+
+    }
+
+    private class MoveGame extends TimerTask {
+
+        @Override
+        public void run() {
+            requestFocus();
+            if (isGameOVer()) {
+                stopGame();
+            } else if (canMovePiece(1, 0)) {
+                moveDown();
+            } else {
+                freezePiece();
+                generatePiece();
+
+            }
+        }
+
+    }
+
 }
