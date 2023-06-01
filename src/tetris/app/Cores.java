@@ -28,13 +28,13 @@ public class Cores extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jColorChooser1 = new javax.swing.JColorChooser();
-        jColorChooser2 = new javax.swing.JColorChooser();
-        jColorChooser4 = new javax.swing.JColorChooser();
-        jColorChooser5 = new javax.swing.JColorChooser();
-        jColorChooser6 = new javax.swing.JColorChooser();
-        jColorChooser7 = new javax.swing.JColorChooser();
-        jColorChooser3 = new javax.swing.JColorChooser();
+        ColorJ = new javax.swing.JColorChooser();
+        ColorL = new javax.swing.JColorChooser();
+        ColorO = new javax.swing.JColorChooser();
+        ColorS = new javax.swing.JColorChooser();
+        ColorT = new javax.swing.JColorChooser();
+        ColorZ = new javax.swing.JColorChooser();
+        ColorI = new javax.swing.JColorChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,13 +45,13 @@ public class Cores extends javax.swing.JFrame {
             }
         });
 
-        jTabbedPane1.addTab("J", jColorChooser1);
-        jTabbedPane1.addTab("L", jColorChooser2);
-        jTabbedPane1.addTab("O", jColorChooser4);
-        jTabbedPane1.addTab("S", jColorChooser5);
-        jTabbedPane1.addTab("T", jColorChooser6);
-        jTabbedPane1.addTab("Z", jColorChooser7);
-        jTabbedPane1.addTab("I", jColorChooser3);
+        jTabbedPane1.addTab("J", ColorJ);
+        jTabbedPane1.addTab("L", ColorL);
+        jTabbedPane1.addTab("O", ColorO);
+        jTabbedPane1.addTab("S", ColorS);
+        jTabbedPane1.addTab("T", ColorT);
+        jTabbedPane1.addTab("Z", ColorZ);
+        jTabbedPane1.addTab("I", ColorI);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,14 +125,14 @@ public class Cores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JColorChooser ColorI;
+    private javax.swing.JColorChooser ColorJ;
+    private javax.swing.JColorChooser ColorL;
+    private javax.swing.JColorChooser ColorO;
+    private javax.swing.JColorChooser ColorS;
+    private javax.swing.JColorChooser ColorT;
+    private javax.swing.JColorChooser ColorZ;
     private javax.swing.JButton jButton1;
-    private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JColorChooser jColorChooser2;
-    private javax.swing.JColorChooser jColorChooser3;
-    private javax.swing.JColorChooser jColorChooser4;
-    private javax.swing.JColorChooser jColorChooser5;
-    private javax.swing.JColorChooser jColorChooser6;
-    private javax.swing.JColorChooser jColorChooser7;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
