@@ -30,6 +30,11 @@ public class About extends javax.swing.JFrame {
         btgoback = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btgoback.setText("Voltar");
         btgoback.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +68,10 @@ public class About extends javax.swing.JFrame {
         i.show();
         dispose();
     }//GEN-LAST:event_btgobackActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
