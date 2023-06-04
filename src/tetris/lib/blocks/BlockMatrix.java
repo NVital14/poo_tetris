@@ -43,8 +43,6 @@ public class BlockMatrix extends JPanel implements Drawablee {
                 true
         );
     }
-    
-    
 
     @Override
     public void draw(Graphics gr, int px, int py, int width, int height,
@@ -59,7 +57,7 @@ public class BlockMatrix extends JPanel implements Drawablee {
                 }
 
                 matrix[y][x].draw(gr, px + x * sizeX, py + y * sizeY, sizeX,
-                        sizeY, paintEmpties);
+                        sizeY);
             }
         }
     }

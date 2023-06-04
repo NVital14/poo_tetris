@@ -21,6 +21,12 @@ public final class TetrisGame extends Board {
         startGame(300);
     }
 
+    public TetrisGame(int lines, int cols) {
+        super(lines, cols);
+        timer = new Timer();
+        startGame(300);
+    }
+
     public void startGame(int delay) {
         timer.schedule(new MoveGame(), 0, delay);
     }

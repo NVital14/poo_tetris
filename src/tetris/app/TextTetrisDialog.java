@@ -12,7 +12,6 @@ import tetris.lib.board.TetrisGame;
  */
 public class TextTetrisDialog extends javax.swing.JDialog {
 
- 
     /**
      * Creates new form TextTetrisDialog
      */
@@ -45,6 +44,7 @@ public class TextTetrisDialog extends javax.swing.JDialog {
         spLines = new javax.swing.JSpinner();
         spColumns = new javax.swing.JSpinner();
         btCreate = new javax.swing.JButton();
+        tetrisGame1 = new tetris.lib.board.TetrisGame();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -139,6 +139,19 @@ public class TextTetrisDialog extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.WEST);
 
+        javax.swing.GroupLayout tetrisGame1Layout = new javax.swing.GroupLayout(tetrisGame1);
+        tetrisGame1.setLayout(tetrisGame1Layout);
+        tetrisGame1Layout.setHorizontalGroup(
+            tetrisGame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 402, Short.MAX_VALUE)
+        );
+        tetrisGame1Layout.setVerticalGroup(
+            tetrisGame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 548, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(tetrisGame1, java.awt.BorderLayout.CENTER);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -169,7 +182,7 @@ public class TextTetrisDialog extends javax.swing.JDialog {
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
         int lines = (Integer) spLines.getValue();
         int cols = (Integer) spColumns.getValue();
-        tetrisGame1 = new TetrisGame();
+        tetrisGame1 = new TetrisGame(lines, cols);
     }//GEN-LAST:event_btCreateActionPerformed
 
     /**
@@ -182,20 +195,25 @@ public class TextTetrisDialog extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info
+                    : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).
+                    log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).
+                    log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).
+                    log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).
+                    log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -204,7 +222,8 @@ public class TextTetrisDialog extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                TextTetrisDialog dialog = new TextTetrisDialog(new javax.swing.JFrame(), true);
+                TextTetrisDialog dialog = new TextTetrisDialog(
+                        new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -231,5 +250,6 @@ public class TextTetrisDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSpinner spColumns;
     private javax.swing.JSpinner spLines;
+    private tetris.lib.board.TetrisGame tetrisGame1;
     // End of variables declaration//GEN-END:variables
 }

@@ -48,11 +48,10 @@ public class Block extends JComponent {
     @Override
     public void paintComponent(Graphics gr) {
         super.paintComponent(gr); //build component
-        draw(gr, 0, 0, getWidth() - 1, getHeight() - 1, true);
+        draw(gr, 0, 0, getWidth() - 1, getHeight() - 1);
     }
 
-    public void draw(Graphics gr, int px, int py, int width, int height,
-            boolean paintEmpties) {
+    public void draw(Graphics gr, int px, int py, int width, int height) {
         //color of fill
         gr.setColor(mycolor);
         //fill block

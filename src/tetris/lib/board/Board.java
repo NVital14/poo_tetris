@@ -399,14 +399,14 @@ public class Board extends BlockMatrix {
         super.draw(gr, px, py, width, height, paintEmpties);
         int sizeX = width / getColumns();
         int sizeY = height / getLines();
-        // if (current != null) {
-        current.draw(gr, px + current.getColumn() * sizeX,
-                py + current.getLine() * sizeY,
-                sizeX * current.getColumns(),
-                sizeY * current.getLines(),
-                false
-        );
-        //  }
+        if (current != null) {
+            current.draw(gr, px + current.getColumn() * sizeX,
+                    py + current.getLine() * sizeY,
+                    sizeX * current.getColumns(),
+                    sizeY * current.getLines(),
+                    false
+            );
+        }
     }
 
 }
