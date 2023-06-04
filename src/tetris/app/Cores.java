@@ -52,10 +52,12 @@ public class Cores extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new java.awt.GridLayout(2, 0));
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
+        jTabbedPane1.setBackground(new java.awt.Color(102, 204, 255));
         jTabbedPane1.setFont(new java.awt.Font("Dancing Script OT", 0, 12)); // NOI18N
 
+        ColorI.setBackground(new java.awt.Color(102, 204, 255));
         ColorI.setFont(new java.awt.Font("Dancing Script OT", 0, 12)); // NOI18N
         jTabbedPane1.addTab("I", ColorI);
         jTabbedPane1.addTab("J", ColorJ);
@@ -69,17 +71,19 @@ public class Cores extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
 
-        jPanel10.setLayout(new java.awt.GridLayout());
+        jPanel10.setLayout(new java.awt.GridLayout(1, 0));
+
+        jPanel7.setBackground(new java.awt.Color(102, 204, 255));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1083, Short.MAX_VALUE)
+            .addGap(0, 234, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
+            .addGap(0, 354, Short.MAX_VALUE)
         );
 
         jPanel10.add(jPanel7);
@@ -88,15 +92,17 @@ public class Cores extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.GridLayout(3, 0));
 
+        jPanel5.setBackground(new java.awt.Color(102, 204, 255));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 234, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 122, Short.MAX_VALUE)
+            .addGap(0, 118, Short.MAX_VALUE)
         );
 
         jPanel4.add(jPanel5);
@@ -113,15 +119,17 @@ public class Cores extends javax.swing.JFrame {
         });
         jPanel4.add(jButton1);
 
+        jPanel6.setBackground(new java.awt.Color(102, 204, 255));
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 234, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 122, Short.MAX_VALUE)
+            .addGap(0, 118, Short.MAX_VALUE)
         );
 
         jPanel4.add(jPanel6);
@@ -130,15 +138,17 @@ public class Cores extends javax.swing.JFrame {
 
         jPanel10.add(jPanel3);
 
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1083, Short.MAX_VALUE)
+            .addGap(0, 234, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
+            .addGap(0, 354, Short.MAX_VALUE)
         );
 
         jPanel10.add(jPanel2);
