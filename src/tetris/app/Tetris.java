@@ -46,6 +46,12 @@ public class Tetris extends javax.swing.JDialog {
         board = new tetris.lib.board.TetrisGame();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 700));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btCreateGame.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
         btCreateGame.setText("Criar Tabuleiro");
@@ -202,6 +208,10 @@ public class Tetris extends javax.swing.JDialog {
     private void btRotateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btRotateKeyTyped
 
     }//GEN-LAST:event_btRotateKeyTyped
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
