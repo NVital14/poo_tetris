@@ -27,16 +27,75 @@ public class Inicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         btgame = new javax.swing.JButton();
-        btrules = new javax.swing.JButton();
         btabout = new javax.swing.JButton();
+        btrules = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setLayout(new java.awt.GridLayout(3, 3));
+
+        jPanel3.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 228, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 268, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3);
 
         jLabel1.setFont(new java.awt.Font("Dancing Script OT", 0, 70)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tetris");
+        jPanel1.add(jLabel1);
+
+        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 228, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 268, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 228, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 268, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel5);
+
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setLayout(new java.awt.GridLayout(3, 1, 0, 20));
 
         btgame.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
         btgame.setText("Jogar");
@@ -45,14 +104,7 @@ public class Inicial extends javax.swing.JFrame {
                 btgameActionPerformed(evt);
             }
         });
-
-        btrules.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
-        btrules.setText("Regras");
-        btrules.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btrulesActionPerformed(evt);
-            }
-        });
+        jPanel2.add(btgame);
 
         btabout.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
         btabout.setText("Acerca de...");
@@ -61,42 +113,51 @@ public class Inicial extends javax.swing.JFrame {
                 btaboutActionPerformed(evt);
             }
         });
+        jPanel2.add(btabout);
+
+        btrules.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
+        btrules.setText("Regras");
+        btrules.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btrulesActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btrules);
+
+        jPanel1.add(jPanel2);
+
+        jPanel6.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 228, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 268, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel6);
+
+        jPanel7.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel7.setLayout(new java.awt.GridLayout());
+        jPanel1.add(jPanel7);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                    .addComponent(btrules, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btgame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btabout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(172, 172, 172))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22)
-                .addComponent(btgame, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btrules, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btabout, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btgameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btgameActionPerformed
-        Nivel n = new Nivel();
-        n.show();
-        dispose();
-    }//GEN-LAST:event_btgameActionPerformed
 
     private void btrulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrulesActionPerformed
         Rules r = new Rules();
@@ -109,6 +170,12 @@ public class Inicial extends javax.swing.JFrame {
         a.show();
         dispose();
     }//GEN-LAST:event_btaboutActionPerformed
+
+    private void btgameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btgameActionPerformed
+        Nivel n = new Nivel();
+        n.show();
+        dispose();
+    }//GEN-LAST:event_btgameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,5 +217,12 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JButton btgame;
     private javax.swing.JButton btrules;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables
 }
