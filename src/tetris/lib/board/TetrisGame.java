@@ -18,7 +18,7 @@ public final class TetrisGame extends Board {
     public TetrisGame() {
         super();
         timer = new Timer();
-        startGame(50);
+        startGame(300);
     }
 
     public void startGame(int delay) {
@@ -31,7 +31,7 @@ public final class TetrisGame extends Board {
 
     }
 
-    public boolean isGameOVer() {
+    public boolean isGameOver() {
         return current.getLine() == 0 //esta no top
                 && !canMovePiece(1, 0); //não pode descer
 
@@ -42,14 +42,16 @@ public final class TetrisGame extends Board {
         @Override
         public void run() {
             requestFocus();
-            if (isGameOVer()) {
-                stopGame();
-            } else if (canMovePiece(1, 0)) {
-                moveDown();
-            } else {
-                freezePiece();
-                generatePiece();
+            if (!(current == null)) {
+                if (isGameOver()) {
+                    stopGame();
+                } else if (canMovePiece(1, 0)) {
+                    moveDown();
+                } else {
+                    freezePiece();
+                    generatePiece();
 
+                }
             }
         }
 

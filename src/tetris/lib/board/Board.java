@@ -22,7 +22,7 @@ import tetris.lib.pieces.PieceZ;
  *
  * @author vital
  */
-public  class Board extends BlockMatrix {
+public class Board extends BlockMatrix {
 
     /**
      * Peça que está no tabuleiro e a dificuldade do jogo.
@@ -48,7 +48,7 @@ public  class Board extends BlockMatrix {
     }
 
     /**
-     * Construtor cópia. 
+     * Construtor cópia.
      *
      * @param board board
      */
@@ -84,43 +84,45 @@ public  class Board extends BlockMatrix {
         this.matrix = new Block[lines][columns];
         for (int y = 0; y < matrix.length; y++) {
             for (int x = 0; x < matrix[y].length; x++) {
-
                 matrix[y][x] = new Empty();
             }
         }
         generatePiece();
     }
-    public void generatePiece(){
+
+    public void generatePiece() {
         Random rnd = new Random();
-            //cria a peça sependendo do número aleatórioF
-            switch (rnd.nextInt(7)) {
-                case 0:
-                    this.current = new PieceI();
-                    break;
-                case 1:
-                    this.current = new PieceJ();
-                    break;
-                case 2:
-                    this.current = new PieceL();
-                    break;
-                case 3:
-                    this.current = new PieceO();
-                    break;
-                case 4:
-                    this.current = new PieceS();
-                    break;
-                case 5:
-                    this.current = new PieceT();
-                    break;
-                case 6:
-                    this.current = new PieceZ();
-                    break;
-                default:
-                    this.current = new PieceZ();
-            }
+        //cria a peça sependendo do número aleatórioF
+        switch (rnd.nextInt(7)) {
+            case 0:
+                this.current = new PieceI();
+                break;
+            case 1:
+                this.current = new PieceJ();
+                break;
+            case 2:
+                this.current = new PieceL();
+                break;
+            case 3:
+                this.current = new PieceO();
+                break;
+            case 4:
+                this.current = new PieceS();
+                break;
+            case 5:
+                this.current = new PieceT();
+                break;
+            case 6:
+                this.current = new PieceZ();
+                break;
+            default:
+                this.current = new PieceZ();
+        }
+        this.current.setColumn(getColumns() / 2 - current.getColumns() / 2);
+        //top of the board
+        this.current.setLine(0);
+        repaint();
     }
-            
-            
 
 //    public void generatePiece() {
 //        //verififica se o nível escolhdio pelo jogado foi o nível "EASY"
@@ -225,12 +227,11 @@ public  class Board extends BlockMatrix {
 //            }
 //        }
 //    }
-
     /**
-     * Fixar a peça currente no tabuleiro
-     */
+     * Fixar a peça currente no tabuleiro      
+     */
     public void freezePiece() {
-         //iterar os blocos da peça current
+        //iterar os blocos da peça current
         for (int y = 0; y < current.getLines(); y++) {
             for (int x = 0; x < current.getColumns(); x++) {
                 //verificar se é vazio
@@ -243,7 +244,7 @@ public  class Board extends BlockMatrix {
                         = current.getMatrix()[y][x].getClone();
             }
         }
-        
+
     }
 
     @Override
@@ -393,17 +394,19 @@ public  class Board extends BlockMatrix {
     }
 
     @Override
-    public void draw(Graphics gr, int px, int py, int width, int height, boolean paintEmpties) {
+    public void draw(Graphics gr, int px, int py, int width, int height,
+            boolean paintEmpties) {
         super.draw(gr, px, py, width, height, paintEmpties);
         int sizeX = width / getColumns();
         int sizeY = height / getLines();
-        if (current != null) {
-            current.draw(gr, px + current.getColumn() * sizeX, 
-                             py + current.getLine()* sizeY, 
-                             sizeX * current.getColumns(), 
-                             sizeY * current.getLines(), false);
-        }
+        // if (current != null) {
+        current.draw(gr, px + current.getColumn() * sizeX,
+                py + current.getLine() * sizeY,
+                sizeX * current.getColumns(),
+                sizeY * current.getLines(),
+                false
+        );
+        //  }
     }
-    
-    
+
 }

@@ -11,28 +11,27 @@ import javax.swing.JComponent;
 /**
  *
  * @author vital
- */  
+ */
 public class Block extends JComponent {
 
     protected char txt;
     protected Color mycolor;
 
-    public Block(){
+    public Block() {
         this(' ');
     }
-    
+
     /**
      * Construtor por parâmetros
      *
      * @param ch caracter
      * @param color cor
      */
-    
     public Block(char ch, Color color) {
         this.txt = ch;
         this.mycolor = color;
     }
-    
+
     public Block(char ch) {
         this.txt = ch;
     }
@@ -48,22 +47,20 @@ public class Block extends JComponent {
 
     @Override
     public void paintComponent(Graphics gr) {
-        //size of component
-        int sizeX = getWidth() - 1;
-        int sizeY = getHeight() - 1;
-        //draw component
-        this.draw(gr, 0, 0, sizeX, sizeY);
+        super.paintComponent(gr); //build component
+        draw(gr, 0, 0, getWidth() - 1, getHeight() - 1, true);
     }
 
-    public void draw(Graphics gr, int px, int py, int width, int height) {
+    public void draw(Graphics gr, int px, int py, int width, int height,
+            boolean paintEmpties) {
         //color of fill
         gr.setColor(mycolor);
         //fill block
-        gr.fillRect(px, py, width, height);
+        gr.fill3DRect(px, py, width, height, true);
         //color of line
         gr.setColor(Color.BLACK);
         //draw line
-        gr.drawRect(px, py, width, height);
+        gr.draw3DRect(px, py, width, height, true);
     }
 
     //Encapsulamento

@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  *
  * @author vital
  */
-public class BlockMatrix extends JPanel implements Drawable {
+public class BlockMatrix extends JPanel implements Drawablee {
 
     protected Block[][] matrix;
 
@@ -39,21 +39,27 @@ public class BlockMatrix extends JPanel implements Drawable {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        draw(g, 0, 0, getWidth(), getHeight(), true);
+        draw(g, 0, 0, getWidth(), getHeight(),
+                true
+        );
     }
+    
+    
 
     @Override
-    public void draw(Graphics gr, int px, int py, int width, int height, boolean paintEmpties) {
+    public void draw(Graphics gr, int px, int py, int width, int height,
+            boolean paintEmpties
+    ) {
         int sizeX = width / getColumns();
         int sizeY = height / getLines();
         for (int y = 0; y < getLines(); y++) {
             for (int x = 0; x < getColumns(); x++) {
-                if(!paintEmpties && matrix[y][x] instanceof Empty){
+                if (!paintEmpties && matrix[y][x] instanceof Empty) {
                     continue;
                 }
-                
+
                 matrix[y][x].draw(gr, px + x * sizeX, py + y * sizeY, sizeX,
-                        sizeY);
+                        sizeY, paintEmpties);
             }
         }
     }

@@ -10,6 +10,9 @@ import java.awt.Graphics;
  *
  * @author Bea⚝
  */
-public interface Drawable {
-    public void draw(Graphics gr, int px, int py, int width, int height, boolean paintEmpties);
+public interface Drawablee {
+
+    public void draw(Graphics gr, int px, int py, int width, int height,
+            boolean paintEmpties
+    );
 }
