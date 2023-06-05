@@ -82,9 +82,6 @@ public final class TetrisGame extends Board {
                 } else {
                     freezePiece();
                     generatePiece();
-                    if (isLineFull(current.getLine()) == true) {
-                        deleteLine(current.getLine());
-                    }
 
                 }
 

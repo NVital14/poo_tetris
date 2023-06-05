@@ -1,24 +1,30 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package tetris.app;
 
 import java.awt.event.KeyEvent;
+import tetris.lib.board.Board;
 
 /**
  *
- * @author IPT
+ * @author vital
  */
-public class GraphicsTetrisDialog extends javax.swing.JDialog {
+public class Tetris extends javax.swing.JDialog {
 
     /**
-     * Creates new form TextTetrisDialog
+     * Creates new form Tetris
+     * @param parent
+     * @param modal
      */
-    public GraphicsTetrisDialog(java.awt.Frame parent, boolean modal) {
+    public Tetris(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        spLines.setValue(20);
+        spColumns.setValue(10);
         setLocationRelativeTo(null);
+
     }
 
     /**
@@ -30,19 +36,47 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btMoveLeft = new javax.swing.JButton();
-        btMoveRight = new javax.swing.JButton();
-        btDown = new javax.swing.JButton();
-        btRotate = new javax.swing.JButton();
         btCreateGame = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         spLines = new javax.swing.JSpinner();
         spColumns = new javax.swing.JSpinner();
+        btMoveLeft = new javax.swing.JButton();
+        btMoveRight = new javax.swing.JButton();
+        btDown = new javax.swing.JButton();
+        btRotate = new javax.swing.JButton();
         board = new tetris.lib.board.TetrisGame();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 700));
+
+        btCreateGame.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
+        btCreateGame.setText("Criar Tabuleiro");
+        btCreateGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCreateGameActionPerformed(evt);
+            }
+        });
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel2.setLayout(new java.awt.GridLayout(3, 2, 30, 20));
+
+        jLabel1.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
+        jLabel1.setText("Linhas");
+        jPanel2.add(jLabel1);
+
+        jLabel2.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
+        jLabel2.setText("Colunas");
+        jPanel2.add(jLabel2);
+
+        spLines.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        spLines.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        spLines.setRequestFocusEnabled(false);
+        jPanel2.add(spLines);
+
+        spColumns.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        spColumns.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        jPanel2.add(spColumns);
 
         btMoveLeft.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tetris/recursos/left.png"))); // NOI18N
         btMoveLeft.addActionListener(new java.awt.event.ActionListener() {
@@ -77,34 +111,6 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
             }
         });
 
-        btCreateGame.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
-        btCreateGame.setText("Criar Tabuleiro");
-        btCreateGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCreateGameActionPerformed(evt);
-            }
-        });
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel2.setLayout(new java.awt.GridLayout(3, 2, 30, 20));
-
-        jLabel1.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
-        jLabel1.setText("Linhas");
-        jPanel2.add(jLabel1);
-
-        jLabel2.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
-        jLabel2.setText("Colunas");
-        jPanel2.add(jLabel2);
-
-        spLines.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        spLines.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        spLines.setRequestFocusEnabled(false);
-        jPanel2.add(spLines);
-
-        spColumns.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        spColumns.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        jPanel2.add(spColumns);
-
         board.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 boardKeyPressed(evt);
@@ -115,7 +121,7 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         board.setLayout(boardLayout);
         boardLayout.setHorizontalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 436, Short.MAX_VALUE)
         );
         boardLayout.setVerticalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,81 +132,84 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btCreateGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(btMoveLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btMoveRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btRotate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(60, 60, 60)))
+                        .addGap(52, 52, 52)))
                 .addGap(26, 26, 26)
-                .addComponent(btMoveLeft, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btMoveRight, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btRotate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btDown, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                .addGap(70, 70, 70)
                 .addComponent(board, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(121, 121, 121)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btCreateGame, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(565, 565, 565))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btMoveLeft, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
-                            .addComponent(board, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btRotate, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
-                        .addGap(53, 53, 53))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btMoveRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(69, 69, 69))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addGap(22, 22, 22)
-                    .addComponent(btCreateGame, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                    .addGap(181, 181, 181)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                        .addGap(22, 22, 22)
+                        .addComponent(btCreateGame, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btRotate, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btMoveLeft, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                            .addComponent(btMoveRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(board, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(105, 105, 105))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btMoveLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMoveLeftActionPerformed
-        board.moveLeft();
-    }//GEN-LAST:event_btMoveLeftActionPerformed
-
-    private void btMoveRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMoveRightActionPerformed
-        board.moveRight();
-    }//GEN-LAST:event_btMoveRightActionPerformed
-
-    private void btDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDownActionPerformed
-        board.moveDown();
-    }//GEN-LAST:event_btDownActionPerformed
-
-    private void btRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRotateActionPerformed
-        board.rotate();
-    }//GEN-LAST:event_btRotateActionPerformed
-
-    private void btRotateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btRotateKeyTyped
-
-    }//GEN-LAST:event_btRotateKeyTyped
 
     private void btCreateGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateGameActionPerformed
         // dimensões do tabuleiro
         int lines = (Integer) spLines.getValue();
         int cols = (Integer) spColumns.getValue();
         board.resize(lines, cols);
+        repaint();
     }//GEN-LAST:event_btCreateGameActionPerformed
+
+    private void btMoveLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMoveLeftActionPerformed
+        board.moveLeft();
+        repaint();
+    }//GEN-LAST:event_btMoveLeftActionPerformed
+
+    private void btMoveRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMoveRightActionPerformed
+        board.moveRight();
+        repaint();
+    }//GEN-LAST:event_btMoveRightActionPerformed
+
+    private void btDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDownActionPerformed
+        board.moveDown();
+        repaint();
+    }//GEN-LAST:event_btDownActionPerformed
+
+    private void btRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRotateActionPerformed
+        board.rotate();
+        repaint();
+    }//GEN-LAST:event_btRotateActionPerformed
+
+    private void btRotateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btRotateKeyTyped
+
+    }//GEN-LAST:event_btRotateKeyTyped
 
     private void boardKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boardKeyPressed
         switch (evt.getKeyCode()) {
@@ -231,39 +240,28 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info
-                    : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GraphicsTetrisDialog.class.
-                    getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GraphicsTetrisDialog.class.
-                    getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GraphicsTetrisDialog.class.
-                    getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GraphicsTetrisDialog.class.
-                    getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the dialog */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GraphicsTetrisDialog dialog = new GraphicsTetrisDialog(
+                Tetris dialog = new Tetris(
                         new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override

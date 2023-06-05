@@ -247,7 +247,7 @@ public class Nivel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        TextTetrisDialog t = new TextTetrisDialog(this, true);
+        GraphicsTetrisDialog t = new GraphicsTetrisDialog(this, true);
         t.show();
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
