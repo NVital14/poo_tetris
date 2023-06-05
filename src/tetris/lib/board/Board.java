@@ -39,12 +39,13 @@ public class Board extends BlockMatrix {
      */
     public Board(Block[][] mat, Piece current) {
         super(mat);
-        this.current = new Piece(current);
+        this.current = current.getClone() //new Piece(current)
+                ;
 
     }
 
     public Board() {
-        super();
+        this(30, 20);
     }
 
     /**
@@ -54,6 +55,17 @@ public class Board extends BlockMatrix {
      */
     public Board(Board board) {
         this(board.matrix, board.current);
+    }
+
+    /**
+     * Constructor with dimensions<br>
+     * build a board with 2d board of empty pieces
+     *
+     * @param lines number of lines
+     * @param columns number of columns
+     */
+    public Board(int lines, int columns) {
+        resize(lines, columns);
     }
 
     /**
@@ -76,10 +88,6 @@ public class Board extends BlockMatrix {
 //        this.level = level;
 //      generatePiece();
 //    }
-    public Board(int lines, int columns) {
-        resize(lines, columns);
-    }
-
     public void resize(int lines, int columns) {
         this.matrix = new Block[lines][columns];
         for (int y = 0; y < matrix.length; y++) {
@@ -231,6 +239,7 @@ public class Board extends BlockMatrix {
      * Fixar a peça currente no tabuleiro      
      */
     public void freezePiece() {
+
         //iterar os blocos da peça current
         for (int y = 0; y < current.getLines(); y++) {
             for (int x = 0; x < current.getColumns(); x++) {
@@ -238,12 +247,13 @@ public class Board extends BlockMatrix {
                 if (current.getMatrix()[y][x] instanceof Empty) {
                     continue;
                 }
-                System.out.println(current.getMatrix()[y][x].toString());
                 //colocar um clone da peça na matriz
                 matrix[current.getLine() + y][current.getColumn() + x]
                         = current.getMatrix()[y][x].getClone();
+
             }
         }
+        repaint();
 
     }
 
@@ -267,6 +277,7 @@ public class Board extends BlockMatrix {
     public void moveLeft() {
         if (canMovePiece(-1, 0)) {
             this.current.moveLeft();
+            repaint();
         }
     }
 
@@ -276,6 +287,7 @@ public class Board extends BlockMatrix {
     public void moveRight() {
         if (canMovePiece(1, 0)) {
             this.current.moveRight();
+            repaint();
         }
     }
 
@@ -285,6 +297,7 @@ public class Board extends BlockMatrix {
     public void moveDown() {
         if (canMovePiece(0, 1)) {
             this.current.moveDown();
+            repaint();
         } else {
             freezePiece();
             generatePiece();
@@ -295,7 +308,7 @@ public class Board extends BlockMatrix {
      * Fazer a peça ir caindo
      */
     public void fallDown() {
-        while (canMovePiece(1, 0)) {
+        while (canMovePiece(0, 1)) {
             this.current.moveDown();
         }
         freezePiece();
@@ -309,6 +322,7 @@ public class Board extends BlockMatrix {
     public void rotate() {
         if (canRotatePiece()) {
             this.current.rotate();
+            repaint();
         }
     }
 

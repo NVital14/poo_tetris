@@ -4,18 +4,18 @@
  */
 package tetris.app;
 
-import tetris.lib.board.TetrisGame;
+import java.awt.event.KeyEvent;
 
 /**
  *
  * @author IPT
  */
-public class TextTetrisDialog extends javax.swing.JDialog {
+public class GraphicsTetrisDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form TextTetrisDialog
      */
-    public TextTetrisDialog(java.awt.Frame parent, boolean modal) {
+    public GraphicsTetrisDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -134,22 +134,26 @@ public class TextTetrisDialog extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.WEST);
 
-        tetrisGame1.setMaximumSize(new java.awt.Dimension(200, 200));
+        tetrisGame1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tetrisGame1KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tetrisGame1Layout = new javax.swing.GroupLayout(tetrisGame1);
         tetrisGame1.setLayout(tetrisGame1Layout);
         tetrisGame1Layout.setHorizontalGroup(
             tetrisGame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+            .addGap(0, 260, Short.MAX_VALUE)
         );
         tetrisGame1Layout.setVerticalGroup(
             tetrisGame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
 
         getContentPane().add(tetrisGame1, java.awt.BorderLayout.CENTER);
@@ -159,26 +163,26 @@ public class TextTetrisDialog extends javax.swing.JDialog {
 
     private void btUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpActionPerformed
         tetrisGame1.rotate();
-        repaint();
+        // repaint();
+
     }//GEN-LAST:event_btUpActionPerformed
 
     private void btLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLeftActionPerformed
         tetrisGame1.moveLeft();
-        repaint();
+        //repaint();
+
     }//GEN-LAST:event_btLeftActionPerformed
 
     private void btDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDownActionPerformed
-        tetrisGame1.moveDown();
-        repaint();
-        if (!tetrisGame1.canMovePiece(1, 0)) {
-            tetrisGame1.freezePiece();
-            tetrisGame1.generatePiece();
-        }
+        tetrisGame1.fallDown();
+        //repaint();
+
     }//GEN-LAST:event_btDownActionPerformed
 
     private void btRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRightActionPerformed
         tetrisGame1.moveRight();
-        repaint();
+        // repaint();
+
     }//GEN-LAST:event_btRightActionPerformed
 
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
@@ -186,6 +190,25 @@ public class TextTetrisDialog extends javax.swing.JDialog {
         int cols = (Integer) spColumns.getValue();
         tetrisGame1.resize(lines, cols);
     }//GEN-LAST:event_btCreateActionPerformed
+
+    private void tetrisGame1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tetrisGame1KeyPressed
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_LEFT:
+                tetrisGame1.moveLeft();
+                break;
+            case KeyEvent.VK_RIGHT:
+                tetrisGame1.moveRight();
+                break;
+            case KeyEvent.VK_DOWN:
+                tetrisGame1.fallDown();
+                break;
+            case KeyEvent.VK_UP:
+                tetrisGame1.rotate();
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_tetrisGame1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -205,26 +228,31 @@ public class TextTetrisDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).
-                    log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GraphicsTetrisDialog.class.
+                    getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).
-                    log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GraphicsTetrisDialog.class.
+                    getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).
-                    log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GraphicsTetrisDialog.class.
+                    getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TextTetrisDialog.class.getName()).
-                    log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GraphicsTetrisDialog.class.
+                    getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
-                TextTetrisDialog dialog = new TextTetrisDialog(
+                GraphicsTetrisDialog dialog = new GraphicsTetrisDialog(
                         new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
