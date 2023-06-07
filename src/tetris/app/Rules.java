@@ -70,7 +70,7 @@ public class Rules extends javax.swing.JFrame {
 
         jPanel8.add(jPanel9);
 
-        jLabel1.setFont(new java.awt.Font("Dancing Script OT", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("League Spartan Thin", 1, 60)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Regras");
@@ -136,6 +136,7 @@ public class Rules extends javax.swing.JFrame {
 
         jPanel5.add(jPanel6);
 
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
         jPanel2.setLayout(new java.awt.GridLayout(3, 0));
 
         jPanel4.setBackground(new java.awt.Color(102, 204, 255));
@@ -153,11 +154,11 @@ public class Rules extends javax.swing.JFrame {
 
         jPanel2.add(jPanel4);
 
-        btgoback.setBackground(new java.awt.Color(204, 204, 255));
-        btgoback.setFont(new java.awt.Font("Dancing Script OT", 0, 36)); // NOI18N
-        btgoback.setForeground(new java.awt.Color(255, 255, 255));
+        btgoback.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        btgoback.setForeground(new java.awt.Color(102, 204, 255));
         btgoback.setText("Voltar");
-        btgoback.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        btgoback.setBorder(null);
+        btgoback.setBorderPainted(false);
         btgoback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btgobackActionPerformed(evt);

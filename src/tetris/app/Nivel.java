@@ -26,7 +26,7 @@ public class Nivel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel8 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
@@ -44,9 +44,12 @@ public class Nivel extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        spLines = new javax.swing.JSpinner();
+        spColumns = new javax.swing.JSpinner();
         jPanel12 = new javax.swing.JPanel();
-
-        jButton3.setText("jButton3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -66,11 +69,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
+            .addGap(0, 445, Short.MAX_VALUE)
         );
 
         jPanel5.add(jPanel13);
@@ -83,30 +86,36 @@ public class Nivel extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 82, Short.MAX_VALUE)
+            .addGap(0, 148, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel3);
 
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setToolTipText("");
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
-        jToggleButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jToggleButton2.setFont(new java.awt.Font("Dancing Script OT", 0, 36)); // NOI18N
-        jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jToggleButton2);
+        jToggleButton2.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        jToggleButton2.setForeground(new java.awt.Color(102, 204, 255));
         jToggleButton2.setText("Fácil");
-        jToggleButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jToggleButton2.setActionCommand("");
+        jToggleButton2.setBorder(null);
+        jToggleButton2.setBorderPainted(false);
         jPanel2.add(jToggleButton2);
 
-        jToggleButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jToggleButton1.setFont(new java.awt.Font("Dancing Script OT", 0, 36)); // NOI18N
-        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jToggleButton1);
+        jToggleButton1.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(102, 204, 255));
         jToggleButton1.setText("Médio");
-        jToggleButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jToggleButton1.setActionCommand("");
+        jToggleButton1.setBorder(null);
+        jToggleButton1.setBorderPainted(false);
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -114,11 +123,13 @@ public class Nivel extends javax.swing.JFrame {
         });
         jPanel2.add(jToggleButton1);
 
-        jToggleButton3.setBackground(new java.awt.Color(204, 204, 255));
-        jToggleButton3.setFont(new java.awt.Font("Dancing Script OT", 0, 36)); // NOI18N
-        jToggleButton3.setForeground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jToggleButton3);
+        jToggleButton3.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        jToggleButton3.setForeground(new java.awt.Color(102, 204, 255));
         jToggleButton3.setText("Difícil");
-        jToggleButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jToggleButton3.setActionCommand("");
+        jToggleButton3.setBorder(null);
+        jToggleButton3.setBorderPainted(false);
         jPanel2.add(jToggleButton3);
 
         jPanel1.add(jPanel2);
@@ -129,11 +140,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 82, Short.MAX_VALUE)
+            .addGap(0, 148, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4);
@@ -146,11 +157,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
+            .addGap(0, 445, Short.MAX_VALUE)
         );
 
         jPanel5.add(jPanel7);
@@ -165,11 +176,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
+            .addGap(0, 445, Short.MAX_VALUE)
         );
 
         jPanel6.add(jPanel11);
@@ -207,14 +218,36 @@ public class Nivel extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 204, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 69, Short.MAX_VALUE)
+            .addGap(0, 135, Short.MAX_VALUE)
         );
 
         jPanel9.add(jPanel10);
+
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel14.setLayout(new java.awt.GridLayout(3, 2, 30, 20));
+
+        jLabel1.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
+        jLabel1.setText("Linhas");
+        jPanel14.add(jLabel1);
+
+        jLabel2.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
+        jLabel2.setText("Colunas");
+        jPanel14.add(jLabel2);
+
+        spLines.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        spLines.setModel(new javax.swing.SpinnerNumberModel(30, 1, null, 1));
+        spLines.setRequestFocusEnabled(false);
+        jPanel14.add(spLines);
+
+        spColumns.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        spColumns.setModel(new javax.swing.SpinnerNumberModel(20, 1, null, 1));
+        jPanel14.add(spColumns);
+
+        jPanel9.add(jPanel14);
 
         jPanel6.add(jPanel9);
 
@@ -224,11 +257,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
+            .addGap(0, 445, Short.MAX_VALUE)
         );
 
         jPanel6.add(jPanel12);
@@ -247,6 +280,10 @@ public class Nivel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // dimensões do tabuleiro
+        int lines = (Integer) spLines.getValue();
+        int cols = (Integer) spColumns.getValue();
+        //board.resize(lines, cols);
         GraphicsTetrisDialog g = new GraphicsTetrisDialog(this, true);
         g.show();
         dispose();
@@ -296,14 +333,17 @@ public class Nivel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -315,5 +355,7 @@ public class Nivel extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JSpinner spColumns;
+    private javax.swing.JSpinner spLines;
     // End of variables declaration//GEN-END:variables
 }
