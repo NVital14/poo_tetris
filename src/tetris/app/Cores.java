@@ -26,6 +26,12 @@ public class Cores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         ColorI = new javax.swing.JColorChooser();
@@ -35,6 +41,7 @@ public class Cores extends javax.swing.JFrame {
         ColorS = new javax.swing.JColorChooser();
         ColorT = new javax.swing.JColorChooser();
         ColorZ = new javax.swing.JColorChooser();
+        jPanel14 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -50,15 +57,75 @@ public class Cores extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.GridLayout(2, 0));
+        getContentPane().setLayout(new java.awt.GridLayout(3, 0));
 
+        jPanel8.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel8.setLayout(new java.awt.GridLayout());
+
+        jPanel9.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 354, Short.MAX_VALUE)
+        );
+
+        jPanel8.add(jPanel9);
+
+        jLabel1.setFont(new java.awt.Font("League Spartan Thin", 1, 60)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Acerca de Nós");
+        jPanel8.add(jLabel1);
+
+        jPanel11.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 354, Short.MAX_VALUE)
+        );
+
+        jPanel8.add(jPanel11);
+
+        getContentPane().add(jPanel8);
+
+        jPanel12.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel12.setLayout(new java.awt.GridLayout());
+
+        jPanel13.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 354, Short.MAX_VALUE)
+        );
+
+        jPanel12.add(jPanel13);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTabbedPane1.setBackground(new java.awt.Color(102, 204, 255));
-        jTabbedPane1.setFont(new java.awt.Font("Dancing Script OT", 0, 12)); // NOI18N
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setFont(new java.awt.Font("League Spartan Thin", 1, 24)); // NOI18N
 
-        ColorI.setBackground(new java.awt.Color(102, 204, 255));
-        ColorI.setFont(new java.awt.Font("Dancing Script OT", 0, 12)); // NOI18N
+        ColorI.setBackground(new java.awt.Color(255, 255, 255));
+        ColorI.setFont(new java.awt.Font("League Spartan Thin", 1, 14)); // NOI18N
         jTabbedPane1.addTab("I", ColorI);
         jTabbedPane1.addTab("J", ColorJ);
         jTabbedPane1.addTab("L", ColorL);
@@ -69,7 +136,24 @@ public class Cores extends javax.swing.JFrame {
 
         jPanel1.add(jTabbedPane1);
 
-        getContentPane().add(jPanel1);
+        jPanel12.add(jPanel1);
+
+        jPanel14.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 354, Short.MAX_VALUE)
+        );
+
+        jPanel12.add(jPanel14);
+
+        getContentPane().add(jPanel12);
 
         jPanel10.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -79,7 +163,7 @@ public class Cores extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,6 +174,7 @@ public class Cores extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.GridLayout(1, 3));
 
+        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
         jPanel4.setLayout(new java.awt.GridLayout(3, 0));
 
         jPanel5.setBackground(new java.awt.Color(102, 204, 255));
@@ -98,7 +183,7 @@ public class Cores extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,11 +192,12 @@ public class Cores extends javax.swing.JFrame {
 
         jPanel4.add(jPanel5);
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setFont(new java.awt.Font("Dancing Script OT", 0, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(102, 204, 255));
         jButton1.setText("Jogar");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -125,7 +211,7 @@ public class Cores extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +230,7 @@ public class Cores extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,14 +298,21 @@ public class Cores extends javax.swing.JFrame {
     private javax.swing.JColorChooser ColorT;
     private javax.swing.JColorChooser ColorZ;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
