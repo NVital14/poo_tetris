@@ -32,8 +32,11 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
 
         jPanel6 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         board = new tetris.lib.board.TetrisGame();
         jPanel8 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -43,22 +46,22 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         });
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
+        jPanel6.setBackground(new java.awt.Color(102, 204, 255));
         jPanel6.setLayout(new java.awt.GridLayout(1, 0, 40, 20));
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
-        );
+        jPanel9.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel9.setLayout(new java.awt.GridLayout(1, 0));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tetris/resources/Design sem nome - Copy.png"))); // NOI18N
+        jPanel9.add(jLabel1);
 
         jPanel6.add(jPanel9);
 
+        jPanel1.setLayout(new java.awt.GridLayout());
+
         board.setBackground(new java.awt.Color(102, 204, 255));
+        board.setPreferredSize(new java.awt.Dimension(652, 1600));
         board.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 boardKeyPressed(evt);
@@ -69,25 +72,24 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         board.setLayout(boardLayout);
         boardLayout.setHorizontalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         boardLayout.setVerticalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
         );
 
-        jPanel6.add(board);
+        jPanel1.add(board);
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
-        );
+        jPanel6.add(jPanel1);
+
+        jPanel8.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel8.setLayout(new java.awt.GridLayout());
+
+        jLabel2.setBackground(new java.awt.Color(102, 204, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tetris/resources/Design sem nome - Copy.png"))); // NOI18N
+        jPanel8.add(jLabel2);
 
         jPanel6.add(jPanel8);
 
@@ -176,6 +178,9 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private tetris.lib.board.TetrisGame board;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
