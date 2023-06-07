@@ -149,6 +149,7 @@ public final class TetrisGame extends Board {
                     freezePiece();
                     generatePiece();
                     canSkipPiece = true;
+
                 }
 
             }

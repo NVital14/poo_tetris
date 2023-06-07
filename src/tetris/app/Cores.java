@@ -188,6 +188,9 @@ public class Cores extends javax.swing.JFrame implements ActionListener{
     private void btEscolherCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEscolherCorActionPerformed
         
         t.show();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        GraphicsTetrisDialog g = new GraphicsTetrisDialog(this, true);
+        g.show();
         dispose();
     }//GEN-LAST:event_btEscolherCorActionPerformed
 
