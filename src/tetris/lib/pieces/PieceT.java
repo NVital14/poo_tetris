@@ -23,5 +23,15 @@ public class PieceT extends Piece {
                 new Block('T', Color.YELLOW),
                 new Empty()},}, 0, 0);
     }
+    
+    public PieceT(Color color) {
+        super(new Block[][]{
+            {new Block('T', color),
+                new Block('T', color),
+                new Block('T', color)},
+            {new Empty(),
+                new Block('T', color),
+                new Empty()},}, 0, 0);
+    }
 
 }

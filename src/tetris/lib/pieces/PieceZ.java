@@ -25,4 +25,16 @@ public class PieceZ extends Piece {
                 new Block('Z', Color.MAGENTA),},},
                 0, 0);
     }
+    
+    public PieceZ(Color color) {
+        super(new Block[][]{
+            {
+                new Block('Z', color),
+                new Block('Z', color),
+                new Empty(),},
+            {new Empty(),
+                new Block('Z', color),
+                new Block('Z', color),},},
+                0, 0);
+    }
 }

@@ -4,6 +4,7 @@
  */
 package tetris.lib.board;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 import tetris.lib.blocks.Block;
@@ -30,6 +31,14 @@ public class Board extends BlockMatrix {
      */
     protected Piece current;
     private Difficulty level;
+
+    public Color colorPieceI;
+    public Color colorPieceJ;
+    public Color colorPieceL;
+    public Color colorPieceO;
+    public Color colorPieceZ;
+    public Color colorPieceS;
+    public Color colorPieceT;
 
     /**
      * Constructor
@@ -103,28 +112,60 @@ public class Board extends BlockMatrix {
         //cria a peça sependendo do número aleatórioF
         switch (rnd.nextInt(7)) {
             case 0:
-                this.current = new PieceI();
+                if (colorPieceI == null) {
+                    this.current = new PieceI();
+                } else {
+                    this.current = new PieceI(colorPieceI);
+                }
                 break;
             case 1:
-                this.current = new PieceJ();
+                if (colorPieceJ == null) {
+                    this.current = new PieceJ();
+                } else {
+                    this.current = new PieceJ(colorPieceJ);
+                }
                 break;
             case 2:
-                this.current = new PieceL();
+                if (colorPieceL == null) {
+                    this.current = new PieceL();
+                } else {
+                    this.current = new PieceL(colorPieceL);
+                }
                 break;
             case 3:
-                this.current = new PieceO();
+                if (colorPieceO == null) {
+                    this.current = new PieceO();
+                } else {
+                    this.current = new PieceO(colorPieceO);
+                }
                 break;
             case 4:
-                this.current = new PieceS();
+                if (colorPieceS == null) {
+                    this.current = new PieceS();
+                } else {
+                    this.current = new PieceS(colorPieceS);
+                }
                 break;
             case 5:
-                this.current = new PieceT();
+                if (colorPieceT == null) {
+                    this.current = new PieceT();
+                } else {
+                    this.current = new PieceT(colorPieceJ);
+                }
                 break;
             case 6:
-                this.current = new PieceZ();
+                if (colorPieceZ == null) {
+                    this.current = new PieceZ();
+                } else {
+                    this.current = new PieceZ(colorPieceZ);
+                }
                 break;
             default:
-                this.current = new PieceZ();
+                if (colorPieceZ == null) {
+                    this.current = new PieceZ();
+                } else {
+                    this.current = new PieceZ(colorPieceZ);
+                }
         }
         this.current.setColumn(getColumns() / 2 - current.getColumns() / 2);
         //top of the board

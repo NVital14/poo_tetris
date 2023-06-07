@@ -24,13 +24,16 @@ public class PieceL extends Piece {
              new Empty()}, 
             },0,0);
     }
-//
-//    private static Block[][] peca = {{new Block('L'), new Block('L'), new Block('L')}, {new Block('L'), new Empty(), new Empty()}};
-//
-//    public PieceL() {
-//        super(peca, 0, 0);
-//    }
-//    public PieceL(Block[][] mat, int linha, int coluna) {
-//        super(mat, linha, coluna);
-//    }
+    
+    public PieceL(Color color) {
+        super(new Block[][]{
+            {new Block('L', color), 
+             new Block('L', color), 
+             new Block('L', color)}, 
+            {new Block('L', color), 
+             new Empty(), 
+             new Empty()}, 
+            },0,0);
+    }
+
 }

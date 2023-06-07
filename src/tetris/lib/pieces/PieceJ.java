@@ -23,4 +23,14 @@ public class PieceJ extends Piece {
                 new Empty(),
                 new Block('J', Color.GREEN),},}, 0, 0);
     }
+    
+    public PieceJ(Color color) {
+        super(new Block[][]{
+            {new Block('J', color),
+                new Block('J', color),
+                new Block('J', color)},
+            {new Empty(),
+                new Empty(),
+                new Block('J', color),},}, 0, 0);
+    }
 }

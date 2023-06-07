@@ -25,4 +25,16 @@ public class PieceS extends Piece {
                 new Empty(),},},
                 0, 0);
     }
+    
+    public PieceS(Color color) {
+        super(new Block[][]{
+            {new Empty(),
+                new Block('S', color),
+                new Block('S', color)},
+            {
+                new Block('S', color),
+                new Block('S', color),
+                new Empty(),},},
+                0, 0);
+    }
 }

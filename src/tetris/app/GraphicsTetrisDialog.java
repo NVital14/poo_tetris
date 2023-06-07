@@ -35,6 +35,7 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         btUp = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        btSkipPiece = new javax.swing.JButton();
         btLeft = new javax.swing.JButton();
         btDown = new javax.swing.JButton();
         btRight = new javax.swing.JButton();
@@ -59,6 +60,14 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         });
         jPanel3.add(btUp);
         jPanel3.add(jLabel2);
+
+        btSkipPiece.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tetris/resources/right.png"))); // NOI18N
+        btSkipPiece.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSkipPieceActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btSkipPiece);
 
         btLeft.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tetris/resources/left.png"))); // NOI18N
         btLeft.addActionListener(new java.awt.event.ActionListener() {
@@ -163,25 +172,21 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
 
     private void btUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpActionPerformed
         tetrisGame1.rotate();
-        // repaint();
 
     }//GEN-LAST:event_btUpActionPerformed
 
     private void btLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLeftActionPerformed
         tetrisGame1.moveLeft();
-        //repaint();
 
     }//GEN-LAST:event_btLeftActionPerformed
 
     private void btDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDownActionPerformed
         tetrisGame1.fallDown();
-        //repaint();
 
     }//GEN-LAST:event_btDownActionPerformed
 
     private void btRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRightActionPerformed
         tetrisGame1.moveRight();
-        // repaint();
 
     }//GEN-LAST:event_btRightActionPerformed
 
@@ -201,14 +206,22 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
                 break;
             case KeyEvent.VK_DOWN:
                 tetrisGame1.fallDown();
+                tetrisGame1.canSkipPiece = true;
                 break;
             case KeyEvent.VK_UP:
                 tetrisGame1.rotate();
+                break;
+            case KeyEvent.VK_SPACE:
+                tetrisGame1.skipPiece();
                 break;
             default:
                 break;
         }
     }//GEN-LAST:event_tetrisGame1KeyPressed
+
+    private void btSkipPieceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSkipPieceActionPerformed
+        tetrisGame1.skipPiece();
+    }//GEN-LAST:event_btSkipPieceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,6 +283,7 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     private javax.swing.JButton btDown;
     private javax.swing.JButton btLeft;
     private javax.swing.JButton btRight;
+    private javax.swing.JButton btSkipPiece;
     private javax.swing.JButton btUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -280,6 +294,6 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSpinner spColumns;
     private javax.swing.JSpinner spLines;
-    private tetris.lib.board.TetrisGame tetrisGame1;
+    protected tetris.lib.board.TetrisGame tetrisGame1;
     // End of variables declaration//GEN-END:variables
 }

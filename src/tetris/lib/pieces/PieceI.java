@@ -21,5 +21,15 @@ public class PieceI extends Piece {
                 new Block('I', Color.RED),}},
                 0, 0);
     }
+    
+        public PieceI(Color color) {
+        super(new Block[][]{
+            {new Block('I', color),
+                new Block('I', color),
+                new Block('I', color),
+                new Block('I', color),}},
+                0, 0);
+    }
+
 
 }
