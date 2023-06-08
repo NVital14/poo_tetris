@@ -285,9 +285,9 @@ public class Nivel extends javax.swing.JFrame {
         int lines = (Integer) spLines.getValue();
         int cols = (Integer) spColumns.getValue();
         //board.resize(lines, cols);
+        dispose();
         GraphicsTetrisDialog g = new GraphicsTetrisDialog(this, true);
         g.show();
-        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed

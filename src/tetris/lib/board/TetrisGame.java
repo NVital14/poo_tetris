@@ -4,11 +4,10 @@
  */
 package tetris.lib.board;
 
-import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
-import tetris.lib.blocks.Block;
 import tetris.lib.blocks.Empty;
+import tetris.lib.pieces.Piece;
 
 /**
  *
@@ -16,8 +15,17 @@ import tetris.lib.blocks.Empty;
  */
 public final class TetrisGame extends Board {
 
-    Timer timer;
+    private Timer timer;
 
+    private boolean canSkipPiece = true;
+
+   
+    private int explodedLines = 0;
+    private int score = 0;
+
+    /**
+     * Construtor por defeito
+     */
     public TetrisGame() {
         super();
         timer = new Timer();
@@ -29,44 +37,141 @@ public final class TetrisGame extends Board {
 //        timer = new Timer();
 //        startGame(300);
 //    }
+    /**
+     * Iniciar o jogo
+     *
+     * @param delay
+     */
     public void startGame(int delay) {
         timer.schedule(new MoveGame(), 0, delay);
     }
 
+    /**
+     * Termina o jogo
+     */
     public void stopGame() {
         timer.cancel();
         //.........
 
     }
 
+    //ENCAPSULAMENTO
+     public boolean getCanSkipPiece() {
+        return canSkipPiece;
+    }
+
+    public void setCanSkipPiece(boolean canSkipPiece) {
+        this.canSkipPiece = canSkipPiece;
+    }
+    private boolean isGamePaused = false;
+
+    public boolean getIsGamePaused() {
+        return isGamePaused;
+    }
+    /**
+     * Pausa o jogo e recomeça o jogo a partir do momento em que estava antes de fazer pause
+     */
+    public void pauseOrUnpauseGame() {
+        //se a variável isGamePaused tiver o valor false, é porque o timer está ativo
+        if (isGamePaused == false) {
+            //cancela o timer (para o jogo)
+            timer.cancel();
+            //coloca a variável isGamePaused a true
+            isGamePaused = true;
+        } 
+        else {
+            //cria novo timer
+            timer = new Timer();
+            //recomeça onde tinha parado
+            timer.schedule(new MoveGame(), 0, 300);
+            //coloca a variável isGamePaused a true
+            isGamePaused = false;
+        }
+    }
+
+    /**
+     * Verifica se o jogo já terminou
+     *
+     * @return true or false
+     */
     public boolean isGameOver() {
-        return current.getLine() == 0 //esta no top
+        return current.getLine() == 0 //está no topo
                 && !canMovePiece(0, 1); //não pode descer
 
     }
 
-    public boolean isLineFull(int line) {
-        //verifica se a linha está cheia
-        for (int x = 0; x < current.getColumns(); x++) {
-            //verificar se existe algum bloco na linha que esteja vazio, se tiver retorna falso
-            if (current.getMatrix()[line][x] instanceof Empty) {
+    /**
+     * Verifica se a linha está preenchida na totalidade
+     *
+     * @param line
+     * @return true or false
+     */
+    private boolean isLineFull(int line) {
+        //percorre cada bloco da linha
+        for (int x = 0; x < getColumns(); x++) {
+            //verifica se o bloco é do tipo Empty
+            if (matrix[line][x] instanceof Empty) {
+                // se o bloco for do tipo Empty, então a célula não está toda preenchida
                 return false;
             }
         }
-        //retorna verdadeiro, porque a linha está cheia
+        //nenhum bloco é do tipo Empty, pelo que a linha está toda preenchida
         return true;
     }
 
-    public void deleteLine(int line) {
-
-        // Percorra de cima para baixo a partir da linha a ser removida
+    /**
+     * Elimina a linha
+     *
+     * @param line
+     */
+    private void deleteLine(int line) {
+        // Percorre de cima para baixo a matrix, a partir da linha a ser removida
         for (int i = line; i > 0; i--) {
-            // Copie a linha superior para a linha atual
+            // Copia a linha superior para a linha atual
             System.arraycopy(matrix[i - 1], 0, matrix[i], 0, matrix[i].length);
+            explodedLines++;
+            score = score  + 200;
         }
-        // Limpe a primeira linha do tabuleiro
-        Arrays.fill(matrix[0], false);
 
+    }
+
+    /**
+     * Verifica se há linhas preenchidas e se houver elimina essas linhas
+     */
+    private void checkAndRemoveLines() {
+        //percorre as linhas 
+        for (int y = 0; y < getLines(); y++) {
+            //se a linha estiver preenchida
+            if (isLineFull(y)) {
+                //elimina a linha
+                deleteLine(y);
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    public void skipPiece() {
+        if (canSkipPiece == true) {
+            clearBoard();
+            generatePiece();
+            canSkipPiece = false;
+        }
+
+    }
+
+    private void clearBoard() {
+        Empty emptyBlock = new Empty();
+        for (int y = 0; y < current.getLines(); y++) {
+            for (int x = 0; x < current.getColumns(); x++) {
+
+                //colocar um clone da peça na matriz
+                matrix[y][x]
+                        = emptyBlock;
+
+            }
+        }
     }
 
     private class MoveGame extends TimerTask {
@@ -82,12 +187,12 @@ public final class TetrisGame extends Board {
                 } else {
                     freezePiece();
                     generatePiece();
-                    if (isLineFull(current.getLine()) == true) {
-                        deleteLine(current.getLine());
-                    }
+                    canSkipPiece = true;
+
                 }
 
             }
+            checkAndRemoveLines();
 
         }
 

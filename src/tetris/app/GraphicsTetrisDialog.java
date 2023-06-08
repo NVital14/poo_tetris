@@ -5,6 +5,7 @@
 package tetris.app;
 
 import java.awt.event.KeyEvent;
+import javax.swing.JButton;
 
 /**
  *
@@ -33,12 +34,17 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         jPanel6 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jBPause = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         board = new tetris.lib.board.TetrisGame();
         jPanel8 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocationByPlatform(true);
+        setMaximumSize(new java.awt.Dimension(1525, 820));
+        setMinimumSize(new java.awt.Dimension(1525, 820));
+        setPreferredSize(new java.awt.Dimension(1525, 820));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -50,18 +56,38 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         jPanel6.setLayout(new java.awt.GridLayout(1, 0, 40, 20));
 
         jPanel9.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel9.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel9.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tetris/resources/Design sem nome - Copy.png"))); // NOI18N
-        jPanel9.add(jLabel1);
+        jPanel9.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        jBPause.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        jBPause.setForeground(new java.awt.Color(102, 204, 255));
+        jBPause.setText("Pause");
+        jBPause.setBorder(null);
+        jBPause.setBorderPainted(false);
+        jBPause.setPreferredSize(new java.awt.Dimension(119, 70));
+        jBPause.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jBPauseInputMethodTextChanged(evt);
+            }
+        });
+        jBPause.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPauseActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jBPause, java.awt.BorderLayout.PAGE_START);
 
         jPanel6.add(jPanel9);
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         board.setBackground(new java.awt.Color(102, 204, 255));
-        board.setPreferredSize(new java.awt.Dimension(652, 1600));
         board.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 boardKeyPressed(evt);
@@ -72,11 +98,11 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         board.setLayout(boardLayout);
         boardLayout.setHorizontalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGap(0, 652, Short.MAX_VALUE)
         );
         boardLayout.setVerticalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 805, Short.MAX_VALUE)
+            .addGap(0, 1600, Short.MAX_VALUE)
         );
 
         jPanel1.add(board);
@@ -84,7 +110,7 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         jPanel6.add(jPanel1);
 
         jPanel8.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel8.setLayout(new java.awt.GridLayout());
+        jPanel8.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel2.setBackground(new java.awt.Color(102, 204, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,27 +125,52 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boardKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boardKeyPressed
-        switch (evt.getKeyCode()) {
-            case KeyEvent.VK_LEFT:
-                board.moveLeft();
-                break;
-            case KeyEvent.VK_RIGHT:
-                board.moveRight();
-                break;
-            case KeyEvent.VK_DOWN:
-                board.fallDown();
-                break;
-            case KeyEvent.VK_UP:
-                board.rotate();
-                break;
-            default:
-                break;
+        if (board.getIsGamePaused() == false) {
+            switch (evt.getKeyCode()) {
+                case KeyEvent.VK_LEFT -> board.moveLeft();
+                case KeyEvent.VK_RIGHT -> board.moveRight();
+                case KeyEvent.VK_DOWN -> {
+                    board.fallDown();
+                    if (board.getCanSkipPiece() == false) {
+                        board.setCanSkipPiece(true);
+                    }
+                }
+                case KeyEvent.VK_UP -> board.rotate();
+                case KeyEvent.VK_SPACE -> board.skipPiece();
+                case KeyEvent.VK_ENTER -> board.pauseOrUnpauseGame();
+                default -> {
+                }
+            }
+
+        } else {
+            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                board.pauseOrUnpauseGame();
+            }
         }
     }//GEN-LAST:event_boardKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
     }//GEN-LAST:event_formWindowOpened
+
+    private void jBPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPauseActionPerformed
+        if (((String)evt.getActionCommand()).equals("Pause")){
+            jBPause.setText("Play");
+            board.pauseOrUnpauseGame();
+        }else{
+            jBPause.setText("Pause");
+        }
+        if (((String)evt.getActionCommand()).equals("Play")){
+            jBPause.setText("Pause");
+            board.pauseOrUnpauseGame();
+        }else{
+            jBPause.setText("Play");
+        }
+    }//GEN-LAST:event_jBPauseActionPerformed
+
+    private void jBPauseInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jBPauseInputMethodTextChanged
+
+    }//GEN-LAST:event_jBPauseInputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -178,6 +229,7 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private tetris.lib.board.TetrisGame board;
+    private javax.swing.JButton jBPause;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
