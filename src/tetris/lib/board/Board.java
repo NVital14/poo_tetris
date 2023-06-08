@@ -32,7 +32,8 @@ public class Board extends BlockMatrix {
      */
     protected Piece current;
     private Difficulty level;
-    public ChosenColor colors;
+
+    ChosenColor colors;
 //    public Color colorPieceI;
 //    public Color colorPieceJ;
 //    public Color colorPieceL;
@@ -113,34 +114,63 @@ public class Board extends BlockMatrix {
         //cria a peça sependendo do número aleatórioF
         switch (rnd.nextInt(7)) {
             case 0:
-                this.current = new PieceI();
-
+                if (colors.getIColor() == null) {
+                    this.current = new PieceI();
+                } else {
+                    this.current = new PieceI(colors.getIColor());
+                }
                 break;
             case 1:
-                this.current = new PieceJ();
-
+                if (colors.getJColor() == null) {
+                    this.current = new PieceJ();
+                } else {
+                    this.current = new PieceJ(colors.getJColor());
+                }
                 break;
             case 2:
-                this.current = new PieceL();
+                if (colors.getLColor() == null) {
+                    this.current = new PieceL();
+                } else {
+                    this.current = new PieceL(colors.getLColor());
+                }
                 break;
             case 3:
-                this.current = new PieceO();
-
+                if (colors.getOColor() == null) {
+                    this.current = new PieceO();
+                } else {
+                    this.current = new PieceO(colors.getOColor());
+                }
                 break;
             case 4:
-                this.current = new PieceS();
+                if (colors.getSColor() == null) {
+                    this.current = new PieceS();
+                } else {
+                    this.current = new PieceS(colors.getSColor());
+                }
                 break;
             case 5:
-                this.current = new PieceT();
-
+                if (colors.getTColor() == null) {
+                    this.current = new PieceT();
+                } else {
+                    this.current = new PieceT(colors.getTColor());
+                }
                 break;
             case 6:
-                this.current = new PieceZ();
-
+                if (colors.getZColor() == null) {
+                    this.current = new PieceZ();
+                } else {
+                    this.current = new PieceZ(colors.getZColor());
+                }
                 break;
             default:
-                this.current = new PieceZ();
+                if (colors.getZColor() == null) {
+                    this.current = new PieceZ();
+                } else {
+                    this.current = new PieceZ(colors.getZColor());
+                }
         }
+        this.current.setColumn(getColumns() / 2 - current.getColumns() / 2);
+        //top of the board
         this.current.setLine(0);
         repaint();
     }

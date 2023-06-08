@@ -7,7 +7,6 @@ package tetris.lib.board;
 import java.util.Timer;
 import java.util.TimerTask;
 import tetris.lib.blocks.Empty;
-import tetris.lib.definitions.ChosenColor;
 import tetris.lib.pieces.Piece;
 
 /**
@@ -20,7 +19,6 @@ public final class TetrisGame extends Board {
 
     public boolean canSkipPiece = true;
 
-    private boolean isGamePaused = false;
 
     /**
      * Construtor por defeito
@@ -52,20 +50,6 @@ public final class TetrisGame extends Board {
         timer.cancel();
         //.........
 
-    }
-
-    public void pauseOrUnpauseGame() {
-        System.out.println("dentro da função");
-        if (isGamePaused == false) {
-            System.out.println("Falso");
-            timer.cancel();
-            isGamePaused = true;
-        } else {
-            System.out.println("verdadeiro");
-            timer = new Timer();
-            timer.schedule(new MoveGame(), 0, 300);
-            isGamePaused = false;
-        }
     }
 
     /**
