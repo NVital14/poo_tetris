@@ -20,6 +20,17 @@ public class Cores extends javax.swing.JFrame implements ActionListener {
     /**
      * Creates new form Cores
      */
+    Color chosenColorPieceI = null;
+    Color chosenColorPieceJ = null;
+    Color chosenColorPieceL = null;
+    Color chosenColorPieceT = null;
+    Color chosenColorPieceO = null;
+    Color chosenColorPieceS = null;
+    Color chosenColorPieceZ = null;
+
+    public ChosenColor colors = new ChosenColor(chosenColorPieceI,
+            chosenColorPieceJ, chosenColorPieceO, chosenColorPieceS,
+            chosenColorPieceL, chosenColorPieceZ, chosenColorPieceT);
 
     public Cores() {
         initComponents();
@@ -142,8 +153,6 @@ public class Cores extends javax.swing.JFrame implements ActionListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         setExtendedState(MAXIMIZED_BOTH);
@@ -180,22 +189,13 @@ public class Cores extends javax.swing.JFrame implements ActionListener {
     private void btJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btJogarActionPerformed
         // TODO add your handling code here:
         GraphicsTetrisDialog g = new GraphicsTetrisDialog(this, true);
+       g.tetrisGame1.colors = colors;
         g.show();
         dispose();
     }//GEN-LAST:event_btJogarActionPerformed
 
+    @Override
     public void actionPerformed(ActionEvent e) {
-        Color chosenColorPieceI = null;
-        Color chosenColorPieceJ = null;
-        Color chosenColorPieceL = null;
-        Color chosenColorPieceT = null;
-        Color chosenColorPieceO = null;
-        Color chosenColorPieceS = null;
-        Color chosenColorPieceZ = null;
-
-        ChosenColor colors = new ChosenColor(chosenColorPieceI,
-                chosenColorPieceJ, chosenColorPieceO, chosenColorPieceS,
-                chosenColorPieceL, chosenColorPieceZ, chosenColorPieceT);
 
         if (e.getSource() == btChooseColorI) {
             chosenColorPieceI = JColorChooser.showDialog(null,

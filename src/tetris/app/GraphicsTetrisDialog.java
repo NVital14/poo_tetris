@@ -195,6 +195,7 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
             }
             case KeyEvent.VK_UP -> tetrisGame1.rotate();
             case KeyEvent.VK_SPACE -> tetrisGame1.skipPiece();
+            case KeyEvent.VK_ENTER-> tetrisGame1.pauseOrUnpauseGame();
             default -> {
             }
         }
@@ -278,6 +279,6 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSpinner spColumns;
     private javax.swing.JSpinner spLines;
-    private tetris.lib.board.TetrisGame tetrisGame1;
+    public tetris.lib.board.TetrisGame tetrisGame1;
     // End of variables declaration//GEN-END:variables
 }
