@@ -10,6 +10,7 @@ import java.util.Random;
 import tetris.lib.blocks.Block;
 import tetris.lib.blocks.BlockMatrix;
 import tetris.lib.blocks.Empty;
+import tetris.lib.definitions.ChosenColor;
 import tetris.lib.pieces.Piece;
 import tetris.lib.pieces.PieceI;
 import tetris.lib.pieces.PieceJ;
@@ -32,13 +33,14 @@ public class Board extends BlockMatrix {
     protected Piece current;
     private Difficulty level;
 
-    public Color colorPieceI;
-    public Color colorPieceJ;
-    public Color colorPieceL;
-    public Color colorPieceO;
-    public Color colorPieceZ;
-    public Color colorPieceS;
-    public Color colorPieceT;
+    ChosenColor colors;
+//    public Color colorPieceI;
+//    public Color colorPieceJ;
+//    public Color colorPieceL;
+//    public Color colorPieceO;
+//    public Color colorPieceZ;
+//    public Color colorPieceS;
+//    public Color colorPieceT;
 
     /**
      * Constructor
@@ -54,7 +56,7 @@ public class Board extends BlockMatrix {
     }
 
     public Board() {
-        this(30, 20);
+        this(20, 10);
     }
 
     /**
@@ -112,59 +114,59 @@ public class Board extends BlockMatrix {
         //cria a peça sependendo do número aleatórioF
         switch (rnd.nextInt(7)) {
             case 0:
-                if (colorPieceI == null) {
+                if (colors.getIColor() == null) {
                     this.current = new PieceI();
                 } else {
-                    this.current = new PieceI(colorPieceI);
+                    this.current = new PieceI(colors.getIColor());
                 }
                 break;
             case 1:
-                if (colorPieceJ == null) {
+                if (colors.getJColor() == null) {
                     this.current = new PieceJ();
                 } else {
-                    this.current = new PieceJ(colorPieceJ);
+                    this.current = new PieceJ(colors.getJColor());
                 }
                 break;
             case 2:
-                if (colorPieceL == null) {
+                if (colors.getLColor() == null) {
                     this.current = new PieceL();
                 } else {
-                    this.current = new PieceL(colorPieceL);
+                    this.current = new PieceL(colors.getLColor());
                 }
                 break;
             case 3:
-                if (colorPieceO == null) {
+                if (colors.getOColor() == null) {
                     this.current = new PieceO();
                 } else {
-                    this.current = new PieceO(colorPieceO);
+                    this.current = new PieceO(colors.getOColor());
                 }
                 break;
             case 4:
-                if (colorPieceS == null) {
+                if (colors.getSColor() == null) {
                     this.current = new PieceS();
                 } else {
-                    this.current = new PieceS(colorPieceS);
+                    this.current = new PieceS(colors.getSColor());
                 }
                 break;
             case 5:
-                if (colorPieceT == null) {
+                if (colors.getTColor() == null) {
                     this.current = new PieceT();
                 } else {
-                    this.current = new PieceT(colorPieceJ);
+                    this.current = new PieceT(colors.getTColor());
                 }
                 break;
             case 6:
-                if (colorPieceZ == null) {
+                if (colors.getZColor() == null) {
                     this.current = new PieceZ();
                 } else {
-                    this.current = new PieceZ(colorPieceZ);
+                    this.current = new PieceZ(colors.getZColor());
                 }
                 break;
             default:
-                if (colorPieceZ == null) {
+                if (colors.getZColor() == null) {
                     this.current = new PieceZ();
                 } else {
-                    this.current = new PieceZ(colorPieceZ);
+                    this.current = new PieceZ(colors.getZColor());
                 }
         }
         this.current.setColumn(getColumns() / 2 - current.getColumns() / 2);

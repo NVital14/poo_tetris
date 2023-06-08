@@ -9,21 +9,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JColorChooser;
 import javax.swing.event.ChangeEvent;
-
+import tetris.lib.definitions.ChosenColor;
 
 /**
  *
  * @author Bea⚝
  */
-public class Cores extends javax.swing.JFrame implements ActionListener{
+public class Cores extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form Cores
      */
-    GraphicsTetrisDialog t = new GraphicsTetrisDialog(this, true);
+
     public Cores() {
         initComponents();
-        btEscolherCor.addActionListener(this);
+        btChooseColorI.addActionListener(this);
+        btChooseColorJ.addActionListener(this);
+        btChooseColorL.addActionListener(this);
+        btChooseColorT.addActionListener(this);
+        btChooseColorO.addActionListener(this);
+        btChooseColorS.addActionListener(this);
+        btChooseColorZ.addActionListener(this);
+
     }
 
     /**
@@ -35,31 +42,14 @@ public class Cores extends javax.swing.JFrame implements ActionListener{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        jPanel13 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        ColorI = new javax.swing.JColorChooser();
-        ColorJ = new javax.swing.JColorChooser();
-        ColorL = new javax.swing.JColorChooser();
-        ColorO = new javax.swing.JColorChooser();
-        ColorS = new javax.swing.JColorChooser();
-        ColorT = new javax.swing.JColorChooser();
-        ColorZ = new javax.swing.JColorChooser();
-        jPanel14 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        btEscolherCor = new javax.swing.JButton();
+        btChooseColorI = new javax.swing.JButton();
+        btChooseColorJ = new javax.swing.JButton();
+        btChooseColorL = new javax.swing.JButton();
+        btChooseColorO = new javax.swing.JButton();
+        btChooseColorT = new javax.swing.JButton();
+        btChooseColorS = new javax.swing.JButton();
+        btChooseColorZ = new javax.swing.JButton();
+        btJogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -69,268 +59,197 @@ public class Cores extends javax.swing.JFrame implements ActionListener{
         });
         getContentPane().setLayout(new java.awt.GridLayout(3, 0));
 
-        jPanel8.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel8.setLayout(new java.awt.GridLayout());
-
-        jPanel9.setBackground(new java.awt.Color(102, 204, 255));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
-        );
-
-        jPanel8.add(jPanel9);
-
-        jLabel1.setFont(new java.awt.Font("League Spartan Thin", 1, 60)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Acerca de Nós");
-        jPanel8.add(jLabel1);
-
-        jPanel11.setBackground(new java.awt.Color(102, 204, 255));
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
-        );
-
-        jPanel8.add(jPanel11);
-
-        getContentPane().add(jPanel8);
-
-        jPanel12.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel12.setLayout(new java.awt.GridLayout());
-
-        jPanel13.setBackground(new java.awt.Color(102, 204, 255));
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
-        );
-
-        jPanel12.add(jPanel13);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
-
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setFont(new java.awt.Font("League Spartan Thin", 1, 24)); // NOI18N
-
-        ColorI.setBackground(new java.awt.Color(255, 255, 255));
-        ColorI.setFont(new java.awt.Font("League Spartan Thin", 1, 14)); // NOI18N
-        jTabbedPane1.addTab("I", ColorI);
-        jTabbedPane1.addTab("J", ColorJ);
-        jTabbedPane1.addTab("L", ColorL);
-        jTabbedPane1.addTab("O", ColorO);
-        jTabbedPane1.addTab("S", ColorS);
-        jTabbedPane1.addTab("T", ColorT);
-        jTabbedPane1.addTab("Z", ColorZ);
-
-        jPanel1.add(jTabbedPane1);
-
-        jPanel12.add(jPanel1);
-
-        jPanel14.setBackground(new java.awt.Color(102, 204, 255));
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
-        );
-
-        jPanel12.add(jPanel14);
-
-        getContentPane().add(jPanel12);
-
-        jPanel10.setLayout(new java.awt.GridLayout(1, 0));
-
-        jPanel7.setBackground(new java.awt.Color(102, 204, 255));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
-        );
-
-        jPanel10.add(jPanel7);
-
-        jPanel3.setLayout(new java.awt.GridLayout(1, 3));
-
-        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel4.setLayout(new java.awt.GridLayout(3, 0));
-
-        jPanel5.setBackground(new java.awt.Color(102, 204, 255));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 118, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(jPanel5);
-
-        jButton1.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(102, 204, 255));
-        jButton1.setText("Jogar");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btChooseColorI.setText("Escolher cor da peça I");
+        btChooseColorI.setMaximumSize(new java.awt.Dimension(25, 23));
+        btChooseColorI.setMinimumSize(new java.awt.Dimension(25, 23));
+        btChooseColorI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btChooseColorIActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1);
+        getContentPane().add(btChooseColorI);
 
-        jPanel6.setBackground(new java.awt.Color(102, 204, 255));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 118, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(jPanel6);
-
-        jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setFont(new java.awt.Font("Dancing Script OT", 0, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Jogar");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btChooseColorJ.setText("Escolher cor da peça J");
+        btChooseColorJ.setMaximumSize(new java.awt.Dimension(25, 23));
+        btChooseColorJ.setMinimumSize(new java.awt.Dimension(25, 23));
+        btChooseColorJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btChooseColorJActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2);
+        getContentPane().add(btChooseColorJ);
 
-        jPanel3.add(jPanel4);
-
-        jPanel10.add(jPanel3);
-
-        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
-
-        btEscolherCor.setBackground(new java.awt.Color(204, 204, 255));
-        btEscolherCor.setFont(new java.awt.Font("Dancing Script OT", 0, 36)); // NOI18N
-        btEscolherCor.setForeground(new java.awt.Color(255, 255, 255));
-        btEscolherCor.setText("cor");
-        btEscolherCor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
-        btEscolherCor.addActionListener(new java.awt.event.ActionListener() {
+        btChooseColorL.setText("Escolher cor da peça L");
+        btChooseColorL.setMaximumSize(new java.awt.Dimension(25, 23));
+        btChooseColorL.setMinimumSize(new java.awt.Dimension(25, 23));
+        btChooseColorL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEscolherCorActionPerformed(evt);
+                btChooseColorLActionPerformed(evt);
             }
         });
+        getContentPane().add(btChooseColorL);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(btEscolherCor, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btEscolherCor, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
-        );
+        btChooseColorO.setText("Escolher cor da peça O");
+        btChooseColorO.setMaximumSize(new java.awt.Dimension(25, 23));
+        btChooseColorO.setMinimumSize(new java.awt.Dimension(25, 23));
+        btChooseColorO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btChooseColorOActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btChooseColorO);
 
-        jPanel10.add(jPanel2);
+        btChooseColorT.setText("Escolher cor da peça T");
+        btChooseColorT.setMaximumSize(new java.awt.Dimension(25, 23));
+        btChooseColorT.setMinimumSize(new java.awt.Dimension(25, 23));
+        btChooseColorT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btChooseColorTActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btChooseColorT);
 
-        getContentPane().add(jPanel10);
+        btChooseColorS.setText("Escolher cor da peça S");
+        btChooseColorS.setMaximumSize(new java.awt.Dimension(25, 23));
+        btChooseColorS.setMinimumSize(new java.awt.Dimension(25, 23));
+        btChooseColorS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btChooseColorSActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btChooseColorS);
+
+        btChooseColorZ.setText("Escolher cor da peça Z");
+        btChooseColorZ.setMaximumSize(new java.awt.Dimension(25, 23));
+        btChooseColorZ.setMinimumSize(new java.awt.Dimension(25, 23));
+        btChooseColorZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btChooseColorZActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btChooseColorZ);
+
+        btJogar.setText("Jogar");
+        btJogar.setMaximumSize(new java.awt.Dimension(25, 23));
+        btJogar.setMinimumSize(new java.awt.Dimension(25, 23));
+        btJogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btJogarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btJogar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btEscolherCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEscolherCorActionPerformed
-        
-        t.show();
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        GraphicsTetrisDialog g = new GraphicsTetrisDialog(this, true);
-        g.show();
-        dispose();
-    }//GEN-LAST:event_btEscolherCorActionPerformed
+    
+
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         setExtendedState(MAXIMIZED_BOTH);
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btChooseColorIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChooseColorIActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btChooseColorIActionPerformed
+
+    private void btChooseColorJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChooseColorJActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btChooseColorJActionPerformed
+
+    private void btChooseColorLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChooseColorLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btChooseColorLActionPerformed
+
+    private void btChooseColorOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChooseColorOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btChooseColorOActionPerformed
+
+    private void btChooseColorTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChooseColorTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btChooseColorTActionPerformed
+
+    private void btChooseColorSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChooseColorSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btChooseColorSActionPerformed
+
+    private void btChooseColorZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChooseColorZActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btChooseColorZActionPerformed
+
+    private void btJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btJogarActionPerformed
+        // TODO add your handling code here:
+        GraphicsTetrisDialog g = new GraphicsTetrisDialog(this, true);
+        g.show();
+        dispose();
+    }//GEN-LAST:event_btJogarActionPerformed
 
     public void actionPerformed(ActionEvent e) {
         Color chosenColorPieceI = null;
-        if(e.getSource() == btEscolherCor){
-        JColorChooser colorChooser = new JColorChooser();
-         chosenColorPieceI = JColorChooser.showDialog(null, "escolher cor",
-                Color.BLACK);
-                }
-        
-       //Color chosenColorPieceI = ColorI.getColor();
-        System.out.println("color I = " +  ColorI.getColor());
-        t.tetrisGame1.colorPieceI = chosenColorPieceI;
-        
-        Color chosenColorPieceJ = ColorJ.getColor();
-        t.tetrisGame1.colorPieceJ = chosenColorPieceJ;
-        
-        Color chosenColorPieceL = ColorL.getColor();
-        t.tetrisGame1.colorPieceL = chosenColorPieceL;
-        
-        Color chosenColorPieceT = ColorT.getColor();
-        t.tetrisGame1.colorPieceT = chosenColorPieceT;
-        
-        Color chosenColorPieceS = ColorS.getColor();
-        t.tetrisGame1.colorPieceS = chosenColorPieceS;
-        
-        Color chosenColorPieceZ = ColorZ.getColor();
-        t.tetrisGame1.colorPieceZ = chosenColorPieceZ;
-        
-        Color chosenColorPieceO = ColorO.getColor();
-        t.tetrisGame1.colorPieceO = chosenColorPieceO;
-        
+        Color chosenColorPieceJ = null;
+        Color chosenColorPieceL = null;
+        Color chosenColorPieceT = null;
+        Color chosenColorPieceO = null;
+        Color chosenColorPieceS = null;
+        Color chosenColorPieceZ = null;
+
+        ChosenColor colors = new ChosenColor(chosenColorPieceI,
+                chosenColorPieceJ, chosenColorPieceO, chosenColorPieceS,
+                chosenColorPieceL, chosenColorPieceZ, chosenColorPieceT);
+
+        if (e.getSource() == btChooseColorI) {
+            chosenColorPieceI = JColorChooser.showDialog(null,
+                    "escolher cor peça I",
+                    Color.BLACK);
+            colors.setIColor(chosenColorPieceI);
+
+        }
+        if (e.getSource() == btChooseColorJ) {
+            chosenColorPieceJ = JColorChooser.showDialog(null,
+                    "escolher cor peça j",
+                    Color.BLACK);
+            colors.setJColor(chosenColorPieceJ);
+
+        }
+
+        if (e.getSource() == btChooseColorL) {
+            chosenColorPieceL = JColorChooser.showDialog(null,
+                    "escolher cor peça L",
+                    Color.BLACK);
+            colors.setLColor(chosenColorPieceL);
+        }
+
+        if (e.getSource() == btChooseColorO) {
+            chosenColorPieceO = JColorChooser.showDialog(null,
+                    "escolher cor peça O",
+                    Color.BLACK);
+            colors.setOColor(chosenColorPieceO);
+
+        }
+
+        if (e.getSource() == btChooseColorT) {
+            chosenColorPieceT = JColorChooser.showDialog(null,
+                    "escolher cor peça T",
+                    Color.BLACK);
+            colors.setTColor(chosenColorPieceT);
+        }
+
+        if (e.getSource() == btChooseColorS) {
+            chosenColorPieceS = JColorChooser.showDialog(null,
+                    "escolher cor peça S",
+                    Color.BLACK);
+            colors.setSColor(chosenColorPieceS);
+
+        }
+
+        if (e.getSource() == btChooseColorZ) {
+            chosenColorPieceZ = JColorChooser.showDialog(null,
+                    "escolher cor peça Z",
+                    Color.BLACK);
+            colors.setZColor(chosenColorPieceZ);
+
+        }
+
     }
 
     /**
@@ -374,33 +293,14 @@ public class Cores extends javax.swing.JFrame implements ActionListener{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JColorChooser ColorI;
-    private javax.swing.JColorChooser ColorJ;
-    private javax.swing.JColorChooser ColorL;
-    private javax.swing.JColorChooser ColorO;
-    private javax.swing.JColorChooser ColorS;
-    private javax.swing.JColorChooser ColorT;
-    private javax.swing.JColorChooser ColorZ;
-    private javax.swing.JButton btEscolherCor;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton btChooseColorI;
+    private javax.swing.JButton btChooseColorJ;
+    private javax.swing.JButton btChooseColorL;
+    private javax.swing.JButton btChooseColorO;
+    private javax.swing.JButton btChooseColorS;
+    private javax.swing.JButton btChooseColorT;
+    private javax.swing.JButton btChooseColorZ;
+    private javax.swing.JButton btJogar;
     // End of variables declaration//GEN-END:variables
 
-    
 }
