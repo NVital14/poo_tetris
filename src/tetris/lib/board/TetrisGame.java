@@ -24,6 +24,10 @@ public final class TetrisGame extends Board {
     private int delay;
     private int freezedPieces = 0;
 
+    private int explodedLines = 0;
+    private int score = 0;
+>>>>>>> 1a4c1a3ea66718a392ef7e742992b031b3cba1e5
+
     /**
      * Construtor por defeito
      */

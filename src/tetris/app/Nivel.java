@@ -77,15 +77,15 @@ public class Nivel extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         spLines = new javax.swing.JSpinner();
         spColumns = new javax.swing.JSpinner();
+        jPanel15 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -105,11 +105,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 636, Short.MAX_VALUE)
         );
 
         jPanel5.add(jPanel13);
@@ -122,11 +122,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 148, Short.MAX_VALUE)
+            .addGap(0, 212, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel3);
@@ -181,11 +181,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 148, Short.MAX_VALUE)
+            .addGap(0, 212, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4);
@@ -198,11 +198,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 636, Short.MAX_VALUE)
         );
 
         jPanel5.add(jPanel7);
@@ -217,35 +217,64 @@ public class Nivel extends javax.swing.JFrame {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 636, Short.MAX_VALUE)
         );
 
         jPanel6.add(jPanel11);
 
         jPanel9.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel9.setLayout(new java.awt.GridLayout(3, 0, 0, 20));
+        jPanel9.setLayout(new java.awt.GridLayout(4, 0));
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setFont(new java.awt.Font("Dancing Script OT", 0, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cores da Peças");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel9.add(jButton1);
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
+        jPanel14.setLayout(new java.awt.GridLayout(2, 2, 30, 0));
 
-        jButton5.setBackground(new java.awt.Color(204, 204, 255));
-        jButton5.setFont(new java.awt.Font("Dancing Script OT", 0, 36)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("League Spartan Thin", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Linhas");
+        jPanel14.add(jLabel1);
+
+        jLabel2.setFont(new java.awt.Font("League Spartan Thin", 1, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Colunas");
+        jPanel14.add(jLabel2);
+
+        spLines.setFont(new java.awt.Font("League Spartan Thin", 0, 18)); // NOI18N
+        spLines.setModel(new javax.swing.SpinnerNumberModel(30, 1, null, 1));
+        spLines.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        spLines.setRequestFocusEnabled(false);
+        jPanel14.add(spLines);
+
+        spColumns.setFont(new java.awt.Font("League Spartan Thin", 0, 18)); // NOI18N
+        spColumns.setModel(new javax.swing.SpinnerNumberModel(20, 1, null, 1));
+        jPanel14.add(spColumns);
+
+        jPanel9.add(jPanel14);
+
+        jPanel15.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 548, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 159, Short.MAX_VALUE)
+        );
+
+        jPanel9.add(jPanel15);
+
+        jButton5.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(102, 204, 255));
         jButton5.setText("Jogar");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jButton5.setBorder(null);
+        jButton5.setBorderPainted(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -253,59 +282,37 @@ public class Nivel extends javax.swing.JFrame {
         });
         jPanel9.add(jButton5);
 
-        jPanel10.setBackground(new java.awt.Color(102, 204, 255));
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 204, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 135, Short.MAX_VALUE)
-        );
-
-        jPanel9.add(jPanel10);
-
-        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel14.setLayout(new java.awt.GridLayout(3, 2, 30, 20));
-
-        jLabel1.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
-        jLabel1.setText("Linhas");
-        jPanel14.add(jLabel1);
-
-        jLabel2.setFont(new java.awt.Font("Dancing Script OT", 0, 24)); // NOI18N
-        jLabel2.setText("Colunas");
-        jPanel14.add(jLabel2);
-
-        spLines.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        spLines.setModel(new javax.swing.SpinnerNumberModel(30, 1, null, 1));
-        spLines.setRequestFocusEnabled(false);
-        jPanel14.add(spLines);
-
-        spColumns.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        spColumns.setModel(new javax.swing.SpinnerNumberModel(20, 1, null, 1));
-        jPanel14.add(spColumns);
-
-        jPanel9.add(jPanel14);
-
-        jPanel6.add(jPanel9);
-
         jPanel12.setBackground(new java.awt.Color(102, 204, 255));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 159, Short.MAX_VALUE)
         );
 
-        jPanel6.add(jPanel12);
+        jPanel9.add(jPanel12);
+
+        jPanel6.add(jPanel9);
+
+        jPanel10.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 548, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 636, Short.MAX_VALUE)
+        );
+
+        jPanel6.add(jPanel10);
 
         jPanel8.add(jPanel6);
 
@@ -313,12 +320,6 @@ public class Nivel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Cores c = new Cores();
-        c.show();
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // dimensões do tabuleiro
@@ -411,7 +412,6 @@ public class Nivel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -421,6 +421,7 @@ public class Nivel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

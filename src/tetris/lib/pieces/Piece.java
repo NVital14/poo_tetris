@@ -94,7 +94,7 @@ public class Piece extends BlockMatrix {
     /**
      * Calcula o comprimento da piece
      *
-     * @return o maior x da matriz
+     * @return o maior x da matriz 
      */
     public int getPieceWidth() {
         int greatestX = -1;
