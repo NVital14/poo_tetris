@@ -16,11 +16,6 @@ public class Block extends JComponent {
 
     protected char txt;
     protected Color mycolor;
-
-    public Block() {
-        this(' ');
-    }
-
     /**
      * Construtor por parâmetros
      *
@@ -31,11 +26,7 @@ public class Block extends JComponent {
         this.txt = ch;
         this.mycolor = color;
     }
-
-    public Block(char ch) {
-        this.txt = ch;
-    }
-
+    
     /**
      * Construtor cópia
      *
@@ -44,21 +35,23 @@ public class Block extends JComponent {
     public Block(Block b) {
         this(b.txt, b.mycolor);
     }
+    
 
     @Override
     public void paintComponent(Graphics gr) {
-        super.paintComponent(gr); //build component
+        //construtor do componente
+        super.paintComponent(gr); 
         draw(gr, 0, 0, getWidth() - 1, getHeight() - 1);
     }
 
     public void draw(Graphics gr, int px, int py, int width, int height) {
-        //color of fill
+        //cor de preenchimento
         gr.setColor(mycolor);
-        //fill block
+        //preencher bloco
         gr.fill3DRect(px, py, width, height, true);
-        //color of line
+        //cor da linha
         gr.setColor(Color.BLACK);
-        //draw line
+        //desenhar a linha
         gr.draw3DRect(px, py, width, height, true);
     }
 
@@ -92,5 +85,13 @@ public class Block extends JComponent {
     public Block getClone() {
         return new Block(this);
     }
+    //    public Block() {
+//        this(' ');
+//    }
+
+
+//    public Block(char ch) {
+//        this.txt = ch;
+//    }
 
 }

@@ -4,6 +4,11 @@
  */
 package tetris.app;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JToggleButton;
+import tetris.lib.board.Difficulty;
+
 /**
  *
  * @author Bea⚝
@@ -13,8 +18,39 @@ public class Nivel extends javax.swing.JFrame {
     /**
      * Creates new form Nivel
      */
+    private boolean btEasySelected = false;
+    private boolean btNormalSelected = false;
+    private boolean btDifficultSelected = false;
+
     public Nivel() {
         initComponents();
+
+        tgBtEasy.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JToggleButton tBtn = (JToggleButton) e.getSource();
+                if (tBtn.isSelected()) {
+                    btEasySelected = true;
+                }
+            }
+        });
+
+        tgBtNormal.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JToggleButton tBtn = (JToggleButton) e.getSource();
+                if (tBtn.isSelected()) {
+                    btNormalSelected = true;
+                }
+            }
+        });
+
+        tgBtDifficult.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JToggleButton tBtn = (JToggleButton) e.getSource();
+                if (tBtn.isSelected()) {
+                    btDifficultSelected = true;
+                }
+            }
+        });
     }
 
     /**
@@ -33,9 +69,9 @@ public class Nivel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        tgBtEasy = new javax.swing.JToggleButton();
+        tgBtNormal = new javax.swing.JToggleButton();
+        tgBtDifficult = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -100,37 +136,42 @@ public class Nivel extends javax.swing.JFrame {
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
-        buttonGroup1.add(jToggleButton2);
-        jToggleButton2.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
-        jToggleButton2.setForeground(new java.awt.Color(102, 204, 255));
-        jToggleButton2.setText("Fácil");
-        jToggleButton2.setActionCommand("");
-        jToggleButton2.setBorder(null);
-        jToggleButton2.setBorderPainted(false);
-        jPanel2.add(jToggleButton2);
-
-        buttonGroup1.add(jToggleButton1);
-        jToggleButton1.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
-        jToggleButton1.setForeground(new java.awt.Color(102, 204, 255));
-        jToggleButton1.setText("Médio");
-        jToggleButton1.setActionCommand("");
-        jToggleButton1.setBorder(null);
-        jToggleButton1.setBorderPainted(false);
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(tgBtEasy);
+        tgBtEasy.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        tgBtEasy.setForeground(new java.awt.Color(102, 204, 255));
+        tgBtEasy.setText("Fácil");
+        tgBtEasy.setActionCommand("");
+        tgBtEasy.setBorder(null);
+        tgBtEasy.setBorderPainted(false);
+        tgBtEasy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                tgBtEasyActionPerformed(evt);
             }
         });
-        jPanel2.add(jToggleButton1);
+        jPanel2.add(tgBtEasy);
 
-        buttonGroup1.add(jToggleButton3);
-        jToggleButton3.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
-        jToggleButton3.setForeground(new java.awt.Color(102, 204, 255));
-        jToggleButton3.setText("Difícil");
-        jToggleButton3.setActionCommand("");
-        jToggleButton3.setBorder(null);
-        jToggleButton3.setBorderPainted(false);
-        jPanel2.add(jToggleButton3);
+        buttonGroup1.add(tgBtNormal);
+        tgBtNormal.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        tgBtNormal.setForeground(new java.awt.Color(102, 204, 255));
+        tgBtNormal.setText("Médio");
+        tgBtNormal.setActionCommand("");
+        tgBtNormal.setBorder(null);
+        tgBtNormal.setBorderPainted(false);
+        tgBtNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tgBtNormalActionPerformed(evt);
+            }
+        });
+        jPanel2.add(tgBtNormal);
+
+        buttonGroup1.add(tgBtDifficult);
+        tgBtDifficult.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        tgBtDifficult.setForeground(new java.awt.Color(102, 204, 255));
+        tgBtDifficult.setText("Difícil");
+        tgBtDifficult.setActionCommand("");
+        tgBtDifficult.setBorder(null);
+        tgBtDifficult.setBorderPainted(false);
+        jPanel2.add(tgBtDifficult);
 
         jPanel1.add(jPanel2);
 
@@ -283,19 +324,50 @@ public class Nivel extends javax.swing.JFrame {
         // dimensões do tabuleiro
         int lines = (Integer) spLines.getValue();
         int cols = (Integer) spColumns.getValue();
-        //board.resize(lines, cols);
-        GraphicsTetrisDialog g = new GraphicsTetrisDialog(this, true);
+        Difficulty dif = btDifficultSelected ? Difficulty.DIFFICULT
+                : btNormalSelected ? Difficulty.NORMAL : Difficulty.EASY;
+
+        GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
+                dif, lines, cols);
         g.show();
         dispose();
+        //board.resize(lines, cols);
+
+//        if (btEasySelected) {
+//            GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
+//                    Difficulty.EASY, lines, cols);
+//            g.show();
+//            dispose();
+//        } else if (btNormalSelected) {
+//            GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
+//                    Difficulty.NORMAL, lines, cols);
+//            g.show();
+//            dispose();
+//        } else if (btDifficultSelected) {
+//            GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
+//                    Difficulty.DIFFICULT, lines, cols);
+//            g.show();
+//            dispose();
+//        } else {
+//            GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
+//                    Difficulty.EASY, lines, cols);
+//            g.show();
+//            dispose();
+//        }
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void tgBtNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgBtNormalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_tgBtNormalActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         setExtendedState(MAXIMIZED_BOTH);
     }//GEN-LAST:event_formWindowOpened
+
+    private void tgBtEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgBtEasyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tgBtEasyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,20 +379,25 @@ public class Nivel extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info
+                    : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Nivel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nivel.class.getName()).log(
+                    java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Nivel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nivel.class.getName()).log(
+                    java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Nivel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nivel.class.getName()).log(
+                    java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Nivel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nivel.class.getName()).log(
+                    java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -352,10 +429,10 @@ public class Nivel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JSpinner spColumns;
     private javax.swing.JSpinner spLines;
+    private javax.swing.JToggleButton tgBtDifficult;
+    private javax.swing.JToggleButton tgBtEasy;
+    private javax.swing.JToggleButton tgBtNormal;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,24 +14,29 @@ import tetris.lib.blocks.Empty;
  */
 public class PieceO extends Piece {
 
+    /**
+     * Construtor por defeito
+     */
     public PieceO() {
         super(new Block[][]{
             {new Block('O', Color.ORANGE),
-                new Block('O', Color.ORANGE),
-                },
+                new Block('O', Color.ORANGE),},
             {new Block('O', Color.ORANGE),
-                new Block('O', Color.ORANGE),
-                },}, 0, 0);
+                new Block('O', Color.ORANGE),},}, 0, 0);
     }
-    
-     public PieceO(Color color) {
+
+    /**
+     * Construtor por parâmetros, que cria a peça com a cor escolhida pelo
+     * utilizador
+     *
+     * @param color
+     */
+    public PieceO(Color color) {
         super(new Block[][]{
             {new Block('O', color),
-                new Block('O', color),
-                },
+                new Block('O', color),},
             {new Block('O', color),
-                new Block('O', color),
-                },}, 0, 0);
+                new Block('O', color),},}, 0, 0);
     }
 
 }

@@ -44,7 +44,6 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         spLines = new javax.swing.JSpinner();
         spColumns = new javax.swing.JSpinner();
         btCreate = new javax.swing.JButton();
-        tetrisGame1 = new tetris.lib.board.TetrisGame();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -139,25 +138,6 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.WEST);
 
-        tetrisGame1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tetrisGame1KeyPressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout tetrisGame1Layout = new javax.swing.GroupLayout(tetrisGame1);
-        tetrisGame1.setLayout(tetrisGame1Layout);
-        tetrisGame1Layout.setHorizontalGroup(
-            tetrisGame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
-        );
-        tetrisGame1Layout.setVerticalGroup(
-            tetrisGame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(tetrisGame1, java.awt.BorderLayout.CENTER);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,12 +169,13 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
             case KeyEvent.VK_RIGHT -> tetrisGame1.moveRight();
             case KeyEvent.VK_DOWN -> {
                 tetrisGame1.fallDown();
-                if (tetrisGame1.canSkipPiece == false) {
-                    tetrisGame1.canSkipPiece = true;
-                }
+//                if (tetrisGame1.canSkipPiece == false) {
+//                    tetrisGame1.canSkipPiece = true;
+//                }
             }
             case KeyEvent.VK_UP -> tetrisGame1.rotate();
             case KeyEvent.VK_SPACE -> tetrisGame1.skipPiece();
+            case KeyEvent.VK_ENTER -> tetrisGame1.pauseOrUnpauseGame();
             default -> {
             }
         }
@@ -278,6 +259,5 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSpinner spColumns;
     private javax.swing.JSpinner spLines;
-    private tetris.lib.board.TetrisGame tetrisGame1;
     // End of variables declaration//GEN-END:variables
 }

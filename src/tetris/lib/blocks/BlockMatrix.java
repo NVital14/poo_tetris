@@ -11,30 +11,7 @@ import javax.swing.JPanel;
  *
  * @author vital
  */
-public class BlockMatrix extends JPanel implements Drawablee {
-
-    protected Block[][] matrix;
-
-    public BlockMatrix(Block[][] matrix) {
-        int l = matrix.length;
-        int c = matrix[0].length;
-        this.matrix = new Block[l][c];
-        for (int i = 0; i < l; i++) {
-            for (int j = 0; j < c; j++) {
-                this.matrix[i][j] = matrix[i][j].getClone();
-            }
-        }
-    }
-
-    public BlockMatrix() {
-        this.matrix = new Block[1][1];
-        this.matrix[0][0] = new Empty();
-
-    }
-
-    public BlockMatrix(BlockMatrix blockMat) {
-        this(blockMat.matrix);
-    }
+public class BlockMatrix extends JPanel implements Drawable {
 
     @Override
     public void paintComponent(Graphics g) {
@@ -61,7 +38,42 @@ public class BlockMatrix extends JPanel implements Drawablee {
             }
         }
     }
+    protected Block[][] matrix;
 
+    /**
+     * Construtor com parâmetros Copia a matriz que vem no parÂmetro
+     *
+     * @param matrix
+     */
+    public BlockMatrix(Block[][] matrix) {
+        int l = matrix.length;
+        int c = matrix[0].length;
+        this.matrix = new Block[l][c];
+        for (int i = 0; i < l; i++) {
+            for (int j = 0; j < c; j++) {
+                this.matrix[i][j] = matrix[i][j].getClone();
+            }
+        }
+    }
+
+    /**
+     * Construtor por defeito, cria um bloco vazio
+     */
+    public BlockMatrix() {
+        this(new Block[][]{{new Empty()}});
+
+    }
+
+    /**
+     * Construtor cópia
+     *
+     * @param blockMat
+     */
+    public BlockMatrix(BlockMatrix blockMat) {
+        this(blockMat.matrix);
+    }
+
+    //ENCAPSULAMENTO
     public Block[][] getMatrix() {
         return matrix;
     }
@@ -74,16 +86,18 @@ public class BlockMatrix extends JPanel implements Drawablee {
         return matrix[0].length;
     }
 
+    /**
+     * Rodar a matriz para o lado direito
+     */
     public void rotate() {
-
         Block[][] aux = new Block[getColumns()][getLines()];
-        //transposta
+        //transposta da matriz
         for (int l = 0; l < getLines(); l++) {
             for (int c = 0; c < getColumns(); c++) {
                 aux[c][l] = matrix[l][c];
             }
         }
-        //espelhar
+        //espelhar a matriz
         int laux = aux.length;
         int caux = aux[0].length;
         for (int l = 0; l < laux; l++) {
@@ -94,13 +108,17 @@ public class BlockMatrix extends JPanel implements Drawablee {
             }
 
         }
-
+        //atualizar a matriz com a auxiliar
         matrix = aux;
     }
 
+    /**
+     * Colocar para texto
+     *
+     * @return matriz 2d de carateres
+     */
     @Override
     public String toString() {
-
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < getLines(); i++) {
             for (int j = 0; j < getColumns(); j++) {
@@ -113,6 +131,11 @@ public class BlockMatrix extends JPanel implements Drawablee {
 
     }
 
+    /**
+     * Clonar a matriz
+     *
+     * @return clone do objeto
+     */
     public BlockMatrix getClone() {
         return new BlockMatrix(this);
     }

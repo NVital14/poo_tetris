@@ -17,7 +17,6 @@ public class Piece extends BlockMatrix {
     //posição no tabuleiro
     private int line;
     private int column;
-    //public boolean getLinha;
 
     /**
      * Construtor
@@ -75,7 +74,7 @@ public class Piece extends BlockMatrix {
         return new Piece(this);
     }
 
-    //Encapsulamento
+    //ENCAPSULAMENTO
     public int getLine() {
         return line;
     }
@@ -128,6 +127,11 @@ public class Piece extends BlockMatrix {
         return greatestY + 1;
     }
 
+    /**
+     * Colocar para texto
+     *
+     * @return
+     */
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();

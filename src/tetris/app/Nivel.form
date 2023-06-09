@@ -111,7 +111,7 @@
                     <Property name="rows" type="int" value="1"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+                    <Component class="javax.swing.JToggleButton" name="tgBtEasy">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup1"/>
@@ -129,8 +129,11 @@
                         </Property>
                         <Property name="borderPainted" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tgBtEasyActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+                    <Component class="javax.swing.JToggleButton" name="tgBtNormal">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup1"/>
@@ -149,10 +152,10 @@
                         <Property name="borderPainted" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tgBtNormalActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JToggleButton" name="jToggleButton3">
+                    <Component class="javax.swing.JToggleButton" name="tgBtDifficult">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup1"/>

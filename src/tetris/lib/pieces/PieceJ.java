@@ -14,6 +14,9 @@ import tetris.lib.blocks.Empty;
  */
 public class PieceJ extends Piece {
 
+    /**
+     * Construtor por defeito
+     */
     public PieceJ() {
         super(new Block[][]{
             {new Block('J', Color.GREEN),
@@ -23,7 +26,13 @@ public class PieceJ extends Piece {
                 new Empty(),
                 new Block('J', Color.GREEN),},}, 0, 0);
     }
-    
+
+    /**
+     * Construtor por parâmetros, que cria a peça com a cor escolhida pelo
+     * utilizador
+     *
+     * @param color
+     */
     public PieceJ(Color color) {
         super(new Block[][]{
             {new Block('J', color),

@@ -10,18 +10,22 @@ import java.awt.Color;
  *
  * @author vital
  */
-public class Empty extends Block{
-    
-    public Empty(){
+public class Empty extends Block {
+
+    /**
+     * Construtor por defeito
+     */
+    public Empty() {
         super('.', Color.WHITE);
     }
-    
+
     /**
+     * Clonar um bloco
      *
-     * @return
+     * @return um bloco empty
      */
     @Override
-    public Block getClone(){
+    public Block getClone() {
         return new Empty();
     }
 }

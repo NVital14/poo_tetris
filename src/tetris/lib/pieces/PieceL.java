@@ -14,26 +14,33 @@ import tetris.lib.blocks.Empty;
  */
 public class PieceL extends Piece {
 
+    /**
+     * Construtor por defeito
+     */
     public PieceL() {
         super(new Block[][]{
-            {new Block('L', Color.BLUE), 
-             new Block('L', Color.BLUE), 
-             new Block('L', Color.BLUE)}, 
-            {new Block('L', Color.BLUE), 
-             new Empty(), 
-             new Empty()}, 
-            },0,0);
+            {new Block('L', Color.BLUE),
+                new Block('L', Color.BLUE),
+                new Block('L', Color.BLUE)},
+            {new Block('L', Color.BLUE),
+                new Empty(),
+                new Empty()},}, 0, 0);
     }
-    
+
+    /**
+     * Construtor por parâmetros, que cria a peça com a cor escolhida pelo
+     * utilizador
+     *
+     * @param color
+     */
     public PieceL(Color color) {
         super(new Block[][]{
-            {new Block('L', color), 
-             new Block('L', color), 
-             new Block('L', color)}, 
-            {new Block('L', color), 
-             new Empty(), 
-             new Empty()}, 
-            },0,0);
+            {new Block('L', color),
+                new Block('L', color),
+                new Block('L', color)},
+            {new Block('L', color),
+                new Empty(),
+                new Empty()},}, 0, 0);
     }
 
 }

@@ -7,7 +7,9 @@ package tetris.lib.board;
 import java.util.Timer;
 import java.util.TimerTask;
 import tetris.lib.blocks.Empty;
-import tetris.lib.pieces.Piece;
+import static tetris.lib.board.Difficulty.DIFFICULT;
+import static tetris.lib.board.Difficulty.EASY;
+import static tetris.lib.board.Difficulty.NORMAL;
 
 /**
  *
@@ -16,9 +18,11 @@ import tetris.lib.pieces.Piece;
 public final class TetrisGame extends Board {
 
     private Timer timer;
-
-    public boolean canSkipPiece = true;
-
+    private boolean canSkipPiece = true;
+    private int explodedLines = 0;
+    private int score = 0;
+    private int delay;
+    private int freezedPieces = 0;
 
     /**
      * Construtor por defeito
@@ -26,14 +30,29 @@ public final class TetrisGame extends Board {
     public TetrisGame() {
         super();
         timer = new Timer();
+        switch (getLevel()) {
+            case EASY -> setDelay(300);
+            case NORMAL -> setDelay(200);
+            case DIFFICULT -> setDelay(100);
+            default -> setDelay(300);
+        }
+        startGame(delay);
+    }
+
+    public TetrisGame(int lines, int cols, Difficulty chosenLevel) {
+        super(lines, cols);
+        level = chosenLevel;
+//        setLevel(chosenLevel);
+        switch (getLevel()) {
+            case EASY -> setDelay(300);
+            case NORMAL -> setDelay(200);
+            case DIFFICULT -> setDelay(100);
+            default -> setDelay(300);
+        }
+        timer = new Timer();
         startGame(300);
     }
 
-//    public TetrisGame(int lines, int cols) {
-//        super(lines, cols);
-//        timer = new Timer();
-//        startGame(300);
-//    }
     /**
      * Iniciar o jogo
      *
@@ -50,6 +69,45 @@ public final class TetrisGame extends Board {
         timer.cancel();
         //.........
 
+    }
+
+    //ENCAPSULAMENTO
+    public boolean getCanSkipPiece() {
+        return canSkipPiece;
+    }
+
+    public void setCanSkipPiece(boolean canSkipPiece) {
+        this.canSkipPiece = canSkipPiece;
+    }
+    private boolean isGamePaused = false;
+
+    public boolean getIsGamePaused() {
+        return isGamePaused;
+    }
+
+    public void setDelay(int delay) {
+        this.delay = delay;
+    }
+
+    /**
+     * Pausa o jogo e recomeça o jogo a partir do momento em que estava antes de
+     * fazer pause
+     */
+    public void pauseOrUnpauseGame() {
+        //se a variável isGamePaused tiver o valor false, é porque o timer está ativo
+        if (isGamePaused == false) {
+            //cancela o timer (para o jogo)
+            timer.cancel();
+            //coloca a variável isGamePaused a true
+            isGamePaused = true;
+        } else {
+            //cria novo timer
+            timer = new Timer();
+            //recomeça onde tinha parado
+            timer.schedule(new MoveGame(), 0, delay);
+            //coloca a variável isGamePaused a true
+            isGamePaused = false;
+        }
     }
 
     /**
@@ -92,6 +150,8 @@ public final class TetrisGame extends Board {
         for (int i = line; i > 0; i--) {
             // Copia a linha superior para a linha atual
             System.arraycopy(matrix[i - 1], 0, matrix[i], 0, matrix[i].length);
+            explodedLines++;
+            score = score + 200;
         }
 
     }
@@ -148,7 +208,16 @@ public final class TetrisGame extends Board {
                 } else {
                     freezePiece();
                     generatePiece();
-                    canSkipPiece = true;
+                    freezedPieces++;
+                    if (getLevel() == EASY) {
+                        canSkipPiece = true;
+                    } else if (getLevel() == NORMAL && freezedPieces == 5) {
+                        canSkipPiece = true;
+                        freezedPieces = 0;
+                    } else if (getLevel() == DIFFICULT && freezedPieces == 10) {
+                        canSkipPiece = true;
+                        freezedPieces = 0;
+                    }
 
                 }
 

@@ -31,7 +31,7 @@ public class Board extends BlockMatrix {
      *
      */
     protected Piece current;
-    private Difficulty level;
+    public Difficulty level;
 
     ChosenColor colors;
 //    public Color colorPieceI;
@@ -79,14 +79,7 @@ public class Board extends BlockMatrix {
         resize(lines, columns);
     }
 
-    /**
-     * Constructor with dimensions<br>
-     * Construtor com dimensões Constrói o tabuleiro de peças vazias
-     *
-     * @param lines número de linhas
-     * @param columns número de colunas
-     * @param level dificuldade do jogo
-     */
+
 //    public Board(int lines, int columns,Difficulty level ) {
 //        //construir a matriz de blocos
 //        this.matrix = new Block[lines][columns];
@@ -99,6 +92,16 @@ public class Board extends BlockMatrix {
 //        this.level = level;
 //      generatePiece();
 //    }
+    
+    //ENCAPSULAMENTO
+    public Difficulty getLevel() {
+        return level;
+    }
+
+    public void setLevel(Difficulty level) {
+        this.level = level;
+    }
+
     public void resize(int lines, int columns) {
         this.matrix = new Block[lines][columns];
         for (int y = 0; y < matrix.length; y++) {
@@ -114,67 +117,41 @@ public class Board extends BlockMatrix {
         //cria a peça sependendo do número aleatórioF
         switch (rnd.nextInt(7)) {
             case 0:
-                if (colors.getIColor() == null) {
-                    this.current = new PieceI();
-                } else {
-                    this.current = new PieceI(colors.getIColor());
-                }
+                this.current = new PieceI();
+
                 break;
             case 1:
-                if (colors.getJColor() == null) {
-                    this.current = new PieceJ();
-                } else {
-                    this.current = new PieceJ(colors.getJColor());
-                }
+                this.current = new PieceJ();
+
                 break;
             case 2:
-                if (colors.getLColor() == null) {
-                    this.current = new PieceL();
-                } else {
-                    this.current = new PieceL(colors.getLColor());
-                }
+                this.current = new PieceL();
                 break;
             case 3:
-                if (colors.getOColor() == null) {
-                    this.current = new PieceO();
-                } else {
-                    this.current = new PieceO(colors.getOColor());
-                }
+                this.current = new PieceO();
+
                 break;
             case 4:
-                if (colors.getSColor() == null) {
-                    this.current = new PieceS();
-                } else {
-                    this.current = new PieceS(colors.getSColor());
-                }
+                this.current = new PieceS();
                 break;
             case 5:
-                if (colors.getTColor() == null) {
-                    this.current = new PieceT();
-                } else {
-                    this.current = new PieceT(colors.getTColor());
-                }
+                this.current = new PieceT();
+
                 break;
             case 6:
-                if (colors.getZColor() == null) {
-                    this.current = new PieceZ();
-                } else {
-                    this.current = new PieceZ(colors.getZColor());
-                }
+                this.current = new PieceZ();
+
                 break;
             default:
-                if (colors.getZColor() == null) {
-                    this.current = new PieceZ();
-                } else {
-                    this.current = new PieceZ(colors.getZColor());
-                }
+                this.current = new PieceZ();
+
         }
-        this.current.setColumn(getColumns() / 2 - current.getColumns() / 2);
+        this.current.setColumn(getColumns() / 2 - current.getColumns()
+                / 2);
         //top of the board
         this.current.setLine(0);
         repaint();
     }
-
 //    public void generatePiece() {
 //        //verififica se o nível escolhdio pelo jogado foi o nível "EASY"
 //        if (this.level == Difficulty.EASY) {
@@ -277,7 +254,14 @@ public class Board extends BlockMatrix {
 //                this.current = new PieceS();
 //            }
 //        }
+//        if (current != null) {
+//            this.current.setColumn(getColumns() / 2 - current.getColumns() / 2);
+//            //top of the board
+//            this.current.setLine(0);
+//            repaint();
+//        }
 //    }
+
     /**
      * Fixar a peça currente no tabuleiro      
      */
