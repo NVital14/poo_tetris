@@ -44,10 +44,10 @@ public class GraphicsTetrisDialog1 extends javax.swing.JDialog {
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        board = new tetris.lib.board.TetrisGame(lines, cols, level);
         jPanel8 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -68,6 +68,14 @@ public class GraphicsTetrisDialog1 extends javax.swing.JDialog {
         jPanel6.add(jPanel9);
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+
+        board.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                boardKeyPressed(evt);
+            }
+        });
+        jPanel1.add(board);
+
         jPanel6.add(jPanel1);
 
         jPanel8.setBackground(new java.awt.Color(102, 204, 255));
@@ -86,14 +94,26 @@ public class GraphicsTetrisDialog1 extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boardKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boardKeyPressed
-        if (board.getIsGamePaused() == false) {
+        if (board.isGameOver()) {
+            board.stopGame();
+        }  
+        else if (board.getIsGamePaused() == false) {
             switch (evt.getKeyCode()) {
                 case KeyEvent.VK_LEFT -> board.moveLeft();
                 case KeyEvent.VK_RIGHT -> board.moveRight();
                 case KeyEvent.VK_DOWN -> {
                     board.fallDown();
-                    if (board.getCanSkipPiece() == false) {
+                    board.setFreezedPieces(board.getFreezedPieces() + 1);
+                    if (level == Difficulty.EASY) {
                         board.setCanSkipPiece(true);
+                    } else if (level == Difficulty.NORMAL && board.
+                            getFreezedPieces() == 5) {
+                        board.setCanSkipPiece(true);
+                        board.setFreezedPieces(0);
+                    } else if (level == Difficulty.DIFFICULT && board.
+                            getFreezedPieces() == 10) {
+                        board.setCanSkipPiece(true);
+                        board.setFreezedPieces(0);
                     }
                 }
                 case KeyEvent.VK_UP -> board.rotate();
@@ -195,6 +215,7 @@ public class GraphicsTetrisDialog1 extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private tetris.lib.board.TetrisGame board;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

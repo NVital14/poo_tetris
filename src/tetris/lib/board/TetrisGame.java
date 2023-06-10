@@ -4,12 +4,15 @@
  */
 package tetris.lib.board;
 
+import java.awt.Color;
 import java.util.Timer;
 import java.util.TimerTask;
 import tetris.lib.blocks.Empty;
 import static tetris.lib.board.Difficulty.DIFFICULT;
 import static tetris.lib.board.Difficulty.EASY;
 import static tetris.lib.board.Difficulty.NORMAL;
+import tetris.lib.definitions.ChosenColor;
+import tetris.app.Music;
 
 /**
  *
@@ -22,31 +25,22 @@ public final class TetrisGame extends Board {
     private int explodedLines = 0;
     private int score = 0;
     private int delay;
+    public Music music = new Music();
     private int freezedPieces = 0;
-
-    private int explodedLines = 0;
-    private int score = 0;
->>>>>>> 1a4c1a3ea66718a392ef7e742992b031b3cba1e5
 
     /**
      * Construtor por defeito
      */
     public TetrisGame() {
         super();
-        timer = new Timer();
-        switch (getLevel()) {
-            case EASY -> setDelay(300);
-            case NORMAL -> setDelay(200);
-            case DIFFICULT -> setDelay(100);
-            default -> setDelay(300);
-        }
-        startGame(delay);
+    
     }
+    public TetrisGame(int lines, int cols, Difficulty chosenLevel,
+            ChosenColor colors) {
+        super(lines, cols, colors);
 
-    public TetrisGame(int lines, int cols, Difficulty chosenLevel) {
-        super(lines, cols);
-        level = chosenLevel;
-//        setLevel(chosenLevel);
+        setLevel(chosenLevel);
+
         switch (getLevel()) {
             case EASY -> setDelay(300);
             case NORMAL -> setDelay(200);
@@ -54,7 +48,7 @@ public final class TetrisGame extends Board {
             default -> setDelay(300);
         }
         timer = new Timer();
-        startGame(300);
+        startGame(delay);
     }
 
     /**
@@ -64,6 +58,7 @@ public final class TetrisGame extends Board {
      */
     public void startGame(int delay) {
         timer.schedule(new MoveGame(), 0, delay);
+        music.startMusic();
     }
 
     /**
@@ -93,6 +88,30 @@ public final class TetrisGame extends Board {
         this.delay = delay;
     }
 
+    public int getFreezedPieces() {
+        return freezedPieces;
+    }
+
+    public void setFreezedPieces(int freezedPieces) {
+        this.freezedPieces = freezedPieces;
+    }
+
+    public int getExplodedLines() {
+        return explodedLines;
+    }
+
+    public void setExplodedLines(int explodedLines) {
+        this.explodedLines = explodedLines;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     /**
      * Pausa o jogo e recomeça o jogo a partir do momento em que estava antes de
      * fazer pause
@@ -120,6 +139,7 @@ public final class TetrisGame extends Board {
      * @return true or false
      */
     public boolean isGameOver() {
+
         return current.getLine() == 0 //está no topo
                 && !canMovePiece(0, 1); //não pode descer
 
@@ -154,10 +174,21 @@ public final class TetrisGame extends Board {
         for (int i = line; i > 0; i--) {
             // Copia a linha superior para a linha atual
             System.arraycopy(matrix[i - 1], 0, matrix[i], 0, matrix[i].length);
+            music.allMusicStop();
+            music.startDeletedLinesMusic();
+            //aumenta o número de linhas rebentadas
             explodedLines++;
-            score = score + 200;
+            //aumenta os popntos, conforme o nível de dificuldade
+            switch (getLevel()) {
+                case EASY -> score += 200;
+                case NORMAL -> score += 250;
+                default -> score += 300;
+            }
+            System.out.println("Score (deleteLines):" + score);
+            System.out.println("linhas rebentadas: " + explodedLines);
         }
-
+ 
+        
     }
 
     /**
@@ -207,6 +238,8 @@ public final class TetrisGame extends Board {
             if (!(current == null)) {
                 if (isGameOver()) {
                     stopGame();
+                    music.allMusicStop();
+                    setFocusable(false);
                 } else if (canMovePiece(0, 1)) {
                     moveDown();
                 } else {

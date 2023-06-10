@@ -4,23 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/app/GraphicsTetrisDialog.java</file>
-            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/pieces/PieceS.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/app/GraphicsTetrisDialog1.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/testes/BoardTest.java</file>
             <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/board/TetrisGame.java</file>
-            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/pieces/PieceI.java</file>
-            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/app/Cores.java</file>
-            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/app/Inicial.java</file>
-            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/pieces/PieceZ.java</file>
-            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/pieces/PieceO.java</file>
-            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/pieces/PieceJ.java</file>
-            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/pieces/PieceL.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/app/Sound.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/blocks/Drawable.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/definitions/ChosenColor.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/app/Nivel.java</file>
             <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/board/Board.java</file>
-            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/lib/pieces/PieceT.java</file>
-            <file>file:/C:/Users/Utilizador/Documents/GitHub/poo_tetris/src/tetris/app/Nivel.java</file>
-            <file>file:/C:/Users/Utilizador/Documents/GitHub/poo_tetris/src/tetris/app/Rules.java</file>
-            <file>file:/C:/Users/Utilizador/Documents/GitHub/poo_tetris/src/tetris/app/About.java</file>
-            <file>file:/C:/Users/Utilizador/Documents/GitHub/poo_tetris/src/tetris/app/Inicial.java</file>
-            <file>file:/C:/Users/Utilizador/Documents/GitHub/poo_tetris/src/tetris/app/Cores.java</file>
-            <file>file:/C:/Users/Utilizador/Documents/GitHub/poo_tetris/src/tetris/app/GraphicsTetrisDialog.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Documents/IPT/POO/TETRISFOLDER/poo_tetris/src/tetris/app/GraphicsTetrisDialog2.java</file>
         </group>
     </open-files>
 </project-private>

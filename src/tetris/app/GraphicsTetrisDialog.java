@@ -4,8 +4,11 @@
  */
 package tetris.app;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
-import javax.swing.JButton;
+import tetris.lib.board.Difficulty;
+import tetris.lib.definitions.ChosenColor;
 
 /**
  *
@@ -13,11 +16,39 @@ import javax.swing.JButton;
  */
 public class GraphicsTetrisDialog extends javax.swing.JDialog {
 
+    static Difficulty level;
+    static int lines;
+    static int cols;
+
+    static Color colorPieceI = Color.RED;
+    static Color colorPieceJ = Color.GREEN;
+    static Color colorPieceL = Color.BLUE;
+    static Color colorPieceT = Color.YELLOW;
+    static Color colorPieceO = Color.ORANGE;
+    static Color colorPieceS = Color.PINK;
+    static Color colorPieceZ = Color.MAGENTA;
+
+    static ChosenColor chosenColors = new ChosenColor(colorPieceI,
+            colorPieceJ, colorPieceO, colorPieceS,
+            colorPieceL, colorPieceZ, colorPieceT);
+
     /**
      * Creates new form TextTetrisDialog
      */
-    public GraphicsTetrisDialog(java.awt.Frame parent, boolean modal) {
+    public GraphicsTetrisDialog(java.awt.Frame parent, boolean modal,
+            Difficulty chosenLevel, int lin, int columns, ChosenColor colors) {
         super(parent, modal);
+        level = chosenLevel;
+        lines = lin;
+        cols = columns;
+        chosenColors.setIColor(colors.getIColor());
+        chosenColors.setJColor(colors.getJColor());
+        chosenColors.setOColor(colors.getOColor());
+        chosenColors.setSColor(colors.getSColor());
+        chosenColors.setLColor(colors.getLColor());
+        chosenColors.setZColor(colors.getZColor());
+        chosenColors.setTColor(colors.getTColor());
+
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -36,12 +67,12 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jBPause = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        board = new tetris.lib.board.TetrisGame();
+        board = new tetris.lib.board.TetrisGame(lines, cols, level, chosenColors);
+        lbGameOver = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocationByPlatform(true);
         setMaximumSize(new java.awt.Dimension(1525, 820));
         setMinimumSize(new java.awt.Dimension(1525, 820));
         setPreferredSize(new java.awt.Dimension(1525, 820));
@@ -60,6 +91,9 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tetris/resources/Design sem nome - Copy.png"))); // NOI18N
+        jLabel1.setAlignmentX(0.5F);
+        jLabel1.setMaximumSize(new java.awt.Dimension(500, 500));
+        jLabel1.setMinimumSize(new java.awt.Dimension(500, 500));
         jPanel9.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jBPause.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
@@ -88,21 +122,39 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         board.setBackground(new java.awt.Color(102, 204, 255));
+        board.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                boardFocusLost(evt);
+            }
+        });
+        board.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                boardPropertyChange(evt);
+            }
+        });
         board.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 boardKeyPressed(evt);
             }
         });
 
+        lbGameOver.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+
         javax.swing.GroupLayout boardLayout = new javax.swing.GroupLayout(board);
         board.setLayout(boardLayout);
         boardLayout.setHorizontalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 652, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardLayout.createSequentialGroup()
+                .addContainerGap(159, Short.MAX_VALUE)
+                .addComponent(lbGameOver, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
         boardLayout.setVerticalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardLayout.createSequentialGroup()
+                .addContainerGap(808, Short.MAX_VALUE)
+                .addComponent(lbGameOver, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(641, 641, 641))
         );
 
         jPanel1.add(board);
@@ -125,19 +177,35 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boardKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boardKeyPressed
-        if (board.getIsGamePaused() == false) {
+        if (board.isGameOver()) {
+            board.stopGame();
+            setFocusable(false);
+        } else if (board.getIsGamePaused() == false) {
             switch (evt.getKeyCode()) {
                 case KeyEvent.VK_LEFT -> board.moveLeft();
                 case KeyEvent.VK_RIGHT -> board.moveRight();
                 case KeyEvent.VK_DOWN -> {
                     board.fallDown();
-                    if (board.getCanSkipPiece() == false) {
+                    board.setScore(board.getScore() + 50);
+                    System.out.println("Score (falldown):" + board.getScore());
+                    board.setFreezedPieces(board.getFreezedPieces() + 1);
+                    if (level == Difficulty.EASY) {
                         board.setCanSkipPiece(true);
+                    } else if (level == Difficulty.NORMAL && board.
+                            getFreezedPieces() == 5) {
+                        board.setCanSkipPiece(true);
+                        board.setFreezedPieces(0);
+                    } else if (level == Difficulty.DIFFICULT && board.
+                            getFreezedPieces() == 10) {
+                        board.setCanSkipPiece(true);
+                        board.setFreezedPieces(0);
                     }
                 }
                 case KeyEvent.VK_UP -> board.rotate();
                 case KeyEvent.VK_SPACE -> board.skipPiece();
-                case KeyEvent.VK_ENTER -> board.pauseOrUnpauseGame();
+                case KeyEvent.VK_ENTER ->
+                    board.pauseOrUnpauseGame();
+
                 default -> {
                 }
             }
@@ -154,16 +222,16 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void jBPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPauseActionPerformed
-        if (((String)evt.getActionCommand()).equals("Pause")){
+        if (((String) evt.getActionCommand()).equals("Pause")) {
             jBPause.setText("Play");
             board.pauseOrUnpauseGame();
-        }else{
+        } else {
             jBPause.setText("Pause");
         }
-        if (((String)evt.getActionCommand()).equals("Play")){
+        if (((String) evt.getActionCommand()).equals("Play")) {
             jBPause.setText("Pause");
             board.pauseOrUnpauseGame();
-        }else{
+        } else {
             jBPause.setText("Play");
         }
     }//GEN-LAST:event_jBPauseActionPerformed
@@ -171,6 +239,18 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     private void jBPauseInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jBPauseInputMethodTextChanged
 
     }//GEN-LAST:event_jBPauseInputMethodTextChanged
+
+    private void boardPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_boardPropertyChange
+
+    }//GEN-LAST:event_boardPropertyChange
+
+    private void boardFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_boardFocusLost
+
+        lbGameOver.setText("GAME OVER");
+        lbGameOver.setFont(new Font("League Spartan Thin", Font.BOLD, 48));
+        lbGameOver.setForeground(Color.RED);
+
+    }//GEN-LAST:event_boardFocusLost
 
     /**
      * @param args the command line arguments
@@ -223,7 +303,8 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 GraphicsTetrisDialog dialog = new GraphicsTetrisDialog(
-                        new javax.swing.JFrame(), true);
+                        new javax.swing.JFrame(), true, level, lines, cols,
+                        chosenColors);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -240,10 +321,10 @@ public class GraphicsTetrisDialog extends javax.swing.JDialog {
     private javax.swing.JButton jBPause;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lbGameOver;
     // End of variables declaration//GEN-END:variables
 }

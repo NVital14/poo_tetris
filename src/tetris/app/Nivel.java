@@ -4,28 +4,49 @@
  */
 package tetris.app;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JColorChooser;
 import javax.swing.JToggleButton;
 import tetris.lib.board.Difficulty;
+import tetris.lib.definitions.ChosenColor;
 
 /**
  *
  * @author Bea⚝
  */
-public class Nivel extends javax.swing.JFrame {
+public class Nivel extends javax.swing.JFrame implements ActionListener {
 
-    /**
-     * Creates new form Nivel
-     */
     private boolean btEasySelected = false;
     private boolean btNormalSelected = false;
     private boolean btDifficultSelected = false;
+    private Color colorPieceI = Color.RED;
+    private Color colorPieceJ = Color.GREEN;
+    private Color colorPieceL = Color.BLUE;
+    private Color colorPieceT = Color.YELLOW;
+    private Color colorPieceO = Color.ORANGE;
+    private Color colorPieceS = Color.PINK;
+    private Color colorPieceZ = Color.MAGENTA;
+    ChosenColor colors = new ChosenColor(colorPieceI,
+                colorPieceJ, colorPieceO, colorPieceS,
+                colorPieceL, colorPieceZ, colorPieceT);
 
+    /**
+     *
+     * Creates new form Nivel
+     */
     public Nivel() {
         initComponents();
+        btI.addActionListener(this);
+        btJ.addActionListener(this);
+        btL.addActionListener(this);
+        btT.addActionListener(this);
+        btO.addActionListener(this);
+        btS.addActionListener(this);
+        btZ.addActionListener(this);
 
-        tgBtEasy.addActionListener(new ActionListener() {
+        btEasy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JToggleButton tBtn = (JToggleButton) e.getSource();
                 if (tBtn.isSelected()) {
@@ -34,7 +55,7 @@ public class Nivel extends javax.swing.JFrame {
             }
         });
 
-        tgBtNormal.addActionListener(new ActionListener() {
+        btMedium.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JToggleButton tBtn = (JToggleButton) e.getSource();
                 if (tBtn.isSelected()) {
@@ -43,7 +64,7 @@ public class Nivel extends javax.swing.JFrame {
             }
         });
 
-        tgBtDifficult.addActionListener(new ActionListener() {
+        btHard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JToggleButton tBtn = (JToggleButton) e.getSource();
                 if (tBtn.isSelected()) {
@@ -69,20 +90,34 @@ public class Nivel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        tgBtEasy = new javax.swing.JToggleButton();
-        tgBtNormal = new javax.swing.JToggleButton();
-        tgBtDifficult = new javax.swing.JToggleButton();
-        jPanel4 = new javax.swing.JPanel();
+        btEasy = new javax.swing.JToggleButton();
+        btMedium = new javax.swing.JToggleButton();
+        btHard = new javax.swing.JToggleButton();
         jPanel7 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
+        jPanel21 = new javax.swing.JPanel();
+        jPanel20 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        btI = new javax.swing.JButton();
+        jPbt1 = new javax.swing.JPanel();
+        btS = new javax.swing.JButton();
+        btJ = new javax.swing.JButton();
+        btO = new javax.swing.JButton();
+        btT = new javax.swing.JButton();
+        btL = new javax.swing.JButton();
+        jPbt2 = new javax.swing.JPanel();
+        btZ = new javax.swing.JButton();
+        jPanel19 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel23 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         spLines = new javax.swing.JSpinner();
         spColumns = new javax.swing.JSpinner();
-        jPanel15 = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -95,7 +130,8 @@ public class Nivel extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanel8.setLayout(new java.awt.GridLayout(2, 0));
+        jPanel8.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel8.setLayout(new java.awt.GridLayout(4, 0, 0, 50));
 
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -105,16 +141,17 @@ public class Nivel extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGap(0, 1128, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
+            .addGap(0, 201, Short.MAX_VALUE)
         );
 
         jPanel5.add(jPanel13);
 
-        jPanel1.setLayout(new java.awt.GridLayout(3, 0));
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setLayout(new java.awt.GridLayout(2, 0));
 
         jPanel3.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -122,11 +159,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGap(0, 1128, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 212, Short.MAX_VALUE)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel3);
@@ -136,59 +173,44 @@ public class Nivel extends javax.swing.JFrame {
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
-        buttonGroup1.add(tgBtEasy);
-        tgBtEasy.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
-        tgBtEasy.setForeground(new java.awt.Color(102, 204, 255));
-        tgBtEasy.setText("Fácil");
-        tgBtEasy.setActionCommand("");
-        tgBtEasy.setBorder(null);
-        tgBtEasy.setBorderPainted(false);
-        tgBtEasy.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btEasy);
+        btEasy.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        btEasy.setForeground(new java.awt.Color(102, 204, 255));
+        btEasy.setText("Fácil");
+        btEasy.setActionCommand("");
+        btEasy.setBorder(null);
+        btEasy.setBorderPainted(false);
+        btEasy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tgBtEasyActionPerformed(evt);
+                btEasyActionPerformed(evt);
             }
         });
-        jPanel2.add(tgBtEasy);
+        jPanel2.add(btEasy);
 
-        buttonGroup1.add(tgBtNormal);
-        tgBtNormal.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
-        tgBtNormal.setForeground(new java.awt.Color(102, 204, 255));
-        tgBtNormal.setText("Médio");
-        tgBtNormal.setActionCommand("");
-        tgBtNormal.setBorder(null);
-        tgBtNormal.setBorderPainted(false);
-        tgBtNormal.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btMedium);
+        btMedium.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        btMedium.setForeground(new java.awt.Color(102, 204, 255));
+        btMedium.setText("Médio");
+        btMedium.setActionCommand("");
+        btMedium.setBorder(null);
+        btMedium.setBorderPainted(false);
+        btMedium.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tgBtNormalActionPerformed(evt);
+                btMediumActionPerformed(evt);
             }
         });
-        jPanel2.add(tgBtNormal);
+        jPanel2.add(btMedium);
 
-        buttonGroup1.add(tgBtDifficult);
-        tgBtDifficult.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
-        tgBtDifficult.setForeground(new java.awt.Color(102, 204, 255));
-        tgBtDifficult.setText("Difícil");
-        tgBtDifficult.setActionCommand("");
-        tgBtDifficult.setBorder(null);
-        tgBtDifficult.setBorderPainted(false);
-        jPanel2.add(tgBtDifficult);
+        buttonGroup1.add(btHard);
+        btHard.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        btHard.setForeground(new java.awt.Color(102, 204, 255));
+        btHard.setText("Difícil");
+        btHard.setActionCommand("");
+        btHard.setBorder(null);
+        btHard.setBorderPainted(false);
+        jPanel2.add(btHard);
 
         jPanel1.add(jPanel2);
-
-        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 212, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel4);
 
         jPanel5.add(jPanel1);
 
@@ -198,47 +220,175 @@ public class Nivel extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGap(0, 1128, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
+            .addGap(0, 201, Short.MAX_VALUE)
         );
 
         jPanel5.add(jPanel7);
 
         jPanel8.add(jPanel5);
 
-        jPanel6.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel21.setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanel11.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel20.setBackground(new java.awt.Color(102, 204, 255));
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1128, Short.MAX_VALUE)
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 201, Short.MAX_VALUE)
         );
 
-        jPanel6.add(jPanel11);
+        jPanel21.add(jPanel20);
 
-        jPanel9.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel9.setLayout(new java.awt.GridLayout(4, 0));
+        jPanel16.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel16.setPreferredSize(new java.awt.Dimension(430, 253));
+        jPanel16.setLayout(new java.awt.GridLayout(3, 3, 30, 30));
+
+        btI.setFont(new java.awt.Font("League Spartan Thin", 1, 24)); // NOI18N
+        btI.setForeground(new java.awt.Color(102, 204, 255));
+        btI.setText("I");
+        btI.setBorder(null);
+        btI.setBorderPainted(false);
+        btI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btIActionPerformed(evt);
+            }
+        });
+        jPanel16.add(btI);
+
+        jPbt1.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPbt1Layout = new javax.swing.GroupLayout(jPbt1);
+        jPbt1.setLayout(jPbt1Layout);
+        jPbt1Layout.setHorizontalGroup(
+            jPbt1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 356, Short.MAX_VALUE)
+        );
+        jPbt1Layout.setVerticalGroup(
+            jPbt1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 47, Short.MAX_VALUE)
+        );
+
+        jPanel16.add(jPbt1);
+
+        btS.setFont(new java.awt.Font("League Spartan Thin", 1, 24)); // NOI18N
+        btS.setForeground(new java.awt.Color(102, 204, 255));
+        btS.setText("S");
+        btS.setBorder(null);
+        btS.setBorderPainted(false);
+        jPanel16.add(btS);
+
+        btJ.setFont(new java.awt.Font("League Spartan Thin", 1, 24)); // NOI18N
+        btJ.setForeground(new java.awt.Color(102, 204, 255));
+        btJ.setText("J");
+        btJ.setBorder(null);
+        btJ.setBorderPainted(false);
+        btJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btJActionPerformed(evt);
+            }
+        });
+        jPanel16.add(btJ);
+
+        btO.setFont(new java.awt.Font("League Spartan Thin", 1, 24)); // NOI18N
+        btO.setForeground(new java.awt.Color(102, 204, 255));
+        btO.setText("O");
+        btO.setBorder(null);
+        btO.setBorderPainted(false);
+        jPanel16.add(btO);
+
+        btT.setFont(new java.awt.Font("League Spartan Thin", 1, 24)); // NOI18N
+        btT.setForeground(new java.awt.Color(102, 204, 255));
+        btT.setText("T");
+        btT.setBorder(null);
+        btT.setBorderPainted(false);
+        jPanel16.add(btT);
+
+        btL.setFont(new java.awt.Font("League Spartan Thin", 1, 24)); // NOI18N
+        btL.setForeground(new java.awt.Color(102, 204, 255));
+        btL.setText("L");
+        btL.setBorder(null);
+        btL.setBorderPainted(false);
+        jPanel16.add(btL);
+
+        jPbt2.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPbt2Layout = new javax.swing.GroupLayout(jPbt2);
+        jPbt2.setLayout(jPbt2Layout);
+        jPbt2Layout.setHorizontalGroup(
+            jPbt2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 356, Short.MAX_VALUE)
+        );
+        jPbt2Layout.setVerticalGroup(
+            jPbt2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 47, Short.MAX_VALUE)
+        );
+
+        jPanel16.add(jPbt2);
+
+        btZ.setFont(new java.awt.Font("League Spartan Thin", 1, 24)); // NOI18N
+        btZ.setForeground(new java.awt.Color(102, 204, 255));
+        btZ.setText("Z");
+        btZ.setBorder(null);
+        btZ.setBorderPainted(false);
+        jPanel16.add(btZ);
+
+        jPanel21.add(jPanel16);
+
+        jPanel19.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1128, Short.MAX_VALUE)
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 201, Short.MAX_VALUE)
+        );
+
+        jPanel21.add(jPanel19);
+
+        jPanel8.add(jPanel21);
+
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
+
+        jPanel23.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1128, Short.MAX_VALUE)
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 201, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(jPanel23);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
         jPanel14.setLayout(new java.awt.GridLayout(2, 2, 30, 0));
 
-        jLabel1.setFont(new java.awt.Font("League Spartan Thin", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 204, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Linhas");
         jPanel14.add(jLabel1);
 
-        jLabel2.setFont(new java.awt.Font("League Spartan Thin", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 204, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Colunas");
         jPanel14.add(jLabel2);
@@ -253,22 +403,45 @@ public class Nivel extends javax.swing.JFrame {
         spColumns.setModel(new javax.swing.SpinnerNumberModel(20, 1, null, 1));
         jPanel14.add(spColumns);
 
-        jPanel9.add(jPanel14);
+        jPanel4.add(jPanel14);
 
-        jPanel15.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel22.setBackground(new java.awt.Color(102, 204, 255));
 
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1128, Short.MAX_VALUE)
         );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 159, Short.MAX_VALUE)
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 201, Short.MAX_VALUE)
         );
 
-        jPanel9.add(jPanel15);
+        jPanel4.add(jPanel22);
+
+        jPanel8.add(jPanel4);
+
+        jPanel6.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel6.setLayout(new java.awt.GridLayout(1, 0));
+
+        jPanel11.setBackground(new java.awt.Color(102, 204, 255));
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1128, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 201, Short.MAX_VALUE)
+        );
+
+        jPanel6.add(jPanel11);
+
+        jPanel9.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel9.setLayout(new java.awt.GridLayout(2, 0));
 
         jButton5.setFont(new java.awt.Font("League Spartan Thin", 1, 48)); // NOI18N
         jButton5.setForeground(new java.awt.Color(102, 204, 255));
@@ -288,11 +461,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGap(0, 1128, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 159, Short.MAX_VALUE)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         jPanel9.add(jPanel12);
@@ -305,11 +478,11 @@ public class Nivel extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGap(0, 1128, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
+            .addGap(0, 201, Short.MAX_VALUE)
         );
 
         jPanel6.add(jPanel10);
@@ -327,48 +500,91 @@ public class Nivel extends javax.swing.JFrame {
         int cols = (Integer) spColumns.getValue();
         Difficulty dif = btDifficultSelected ? Difficulty.DIFFICULT
                 : btNormalSelected ? Difficulty.NORMAL : Difficulty.EASY;
-
-        GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
-                dif, lines, cols);
-        g.show();
         dispose();
-        //board.resize(lines, cols);
-
-//        if (btEasySelected) {
-//            GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
-//                    Difficulty.EASY, lines, cols);
-//            g.show();
-//            dispose();
-//        } else if (btNormalSelected) {
-//            GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
-//                    Difficulty.NORMAL, lines, cols);
-//            g.show();
-//            dispose();
-//        } else if (btDifficultSelected) {
-//            GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
-//                    Difficulty.DIFFICULT, lines, cols);
-//            g.show();
-//            dispose();
-//        } else {
-//            GraphicsTetrisDialog1 g = new GraphicsTetrisDialog1(this, true,
-//                    Difficulty.EASY, lines, cols);
-//            g.show();
-//            dispose();
-//        }
-
+        GraphicsTetrisDialog g = new GraphicsTetrisDialog(this, true,
+                dif, lines, cols, colors);
+        g.show();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void tgBtNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgBtNormalActionPerformed
+    private void btMediumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMediumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tgBtNormalActionPerformed
+    }//GEN-LAST:event_btMediumActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         setExtendedState(MAXIMIZED_BOTH);
     }//GEN-LAST:event_formWindowOpened
 
-    private void tgBtEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgBtEasyActionPerformed
+    private void btEasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEasyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tgBtEasyActionPerformed
+    }//GEN-LAST:event_btEasyActionPerformed
+
+    private void btJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btJActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btJActionPerformed
+
+    private void btIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btIActionPerformed
+    public void actionPerformed(ActionEvent e) {
+        
+        if (e.getSource() == btI) {
+            colorPieceI = JColorChooser.showDialog(null,
+                    "escolher cor peça I",
+                    Color.BLACK);
+            colors.setIColor(colorPieceI);
+            btI.setBackground(colorPieceI);
+
+        }
+        if (e.getSource() == btJ) {
+            colorPieceJ = JColorChooser.showDialog(null,
+                    "escolher cor peça j",
+                    Color.BLACK);
+            colors.setJColor(colorPieceJ);
+            btJ.setBackground(colorPieceJ);
+        }
+
+        if (e.getSource() == btL) {
+            colorPieceL = JColorChooser.showDialog(null,
+                    "escolher cor peça L",
+                    Color.BLACK);
+            colors.setLColor(colorPieceL);
+            btL.setBackground(colorPieceL);
+        }
+
+        if (e.getSource() == btO) {
+            colorPieceO = JColorChooser.showDialog(null,
+                    "escolher cor peça O",
+                    Color.BLACK);
+            colors.setOColor(colorPieceO);
+            btO.setBackground(colorPieceO);
+        }
+
+        if (e.getSource() == btT) {
+            colorPieceT = JColorChooser.showDialog(null,
+                    "escolher cor peça T",
+                    Color.BLACK);
+            colors.setTColor(colorPieceT);
+            btT.setBackground(colorPieceT);
+        }
+
+        if (e.getSource() == btS) {
+            colorPieceS = JColorChooser.showDialog(null,
+                    "escolher cor peça S",
+                    Color.BLACK);
+            colors.setSColor(colorPieceS);
+            btS.setBackground(colorPieceS);
+        }
+
+        if (e.getSource() == btZ) {
+            colorPieceZ = JColorChooser.showDialog(null,
+                    "escolher cor peça Z",
+                    Color.BLACK);
+            colors.setZColor(colorPieceZ);
+            btZ.setBackground(colorPieceZ);
+
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -401,6 +617,7 @@ public class Nivel extends javax.swing.JFrame {
                     java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -411,6 +628,16 @@ public class Nivel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btEasy;
+    private javax.swing.JToggleButton btHard;
+    private javax.swing.JButton btI;
+    private javax.swing.JButton btJ;
+    private javax.swing.JButton btL;
+    private javax.swing.JToggleButton btMedium;
+    private javax.swing.JButton btO;
+    private javax.swing.JButton btS;
+    private javax.swing.JButton btT;
+    private javax.swing.JButton btZ;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -421,8 +648,13 @@ public class Nivel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -430,10 +662,9 @@ public class Nivel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPbt1;
+    private javax.swing.JPanel jPbt2;
     private javax.swing.JSpinner spColumns;
     private javax.swing.JSpinner spLines;
-    private javax.swing.JToggleButton tgBtDifficult;
-    private javax.swing.JToggleButton tgBtEasy;
-    private javax.swing.JToggleButton tgBtNormal;
     // End of variables declaration//GEN-END:variables
 }

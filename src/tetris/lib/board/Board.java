@@ -31,16 +31,11 @@ public class Board extends BlockMatrix {
      *
      */
     protected Piece current;
-    public Difficulty level;
+    private Difficulty level = Difficulty.EASY;
 
-    ChosenColor colors;
-//    public Color colorPieceI;
-//    public Color colorPieceJ;
-//    public Color colorPieceL;
-//    public Color colorPieceO;
-//    public Color colorPieceZ;
-//    public Color colorPieceS;
-//    public Color colorPieceT;
+    public ChosenColor colors = new ChosenColor(Color.RED, Color.GREEN,
+            Color.ORANGE, Color.PINK, Color.GREEN, Color.MAGENTA, Color.YELLOW
+    );
 
     /**
      * Constructor
@@ -56,7 +51,7 @@ public class Board extends BlockMatrix {
     }
 
     public Board() {
-        this(20, 10);
+        resizePorDefeito(20, 10);
     }
 
     /**
@@ -74,25 +69,20 @@ public class Board extends BlockMatrix {
      *
      * @param lines number of lines
      * @param columns number of columns
+     * @param chosenColors
      */
-    public Board(int lines, int columns) {
+    public Board(int lines, int columns, ChosenColor chosenColors) {
+        colors.setIColor(chosenColors.getIColor());
+        colors.setJColor(chosenColors.getJColor());
+        colors.setLColor(chosenColors.getLColor());
+        colors.setOColor(chosenColors.getOColor());
+        colors.setTColor(chosenColors.getTColor());
+        colors.setSColor(chosenColors.getSColor());
+        colors.setZColor(chosenColors.getZColor());
         resize(lines, columns);
+
     }
 
-
-//    public Board(int lines, int columns,Difficulty level ) {
-//        //construir a matriz de blocos
-//        this.matrix = new Block[lines][columns];
-//        //preencher a matriz com blocos vazios
-//        for (int y = 0; y < lines; y++) {
-//            for (int x = 0; x < columns; x++) {
-//                matrix[y][x] = new Empty();
-//            }
-//        }
-//        this.level = level;
-//      generatePiece();
-//    }
-    
     //ENCAPSULAMENTO
     public Difficulty getLevel() {
         return level;
@@ -112,155 +102,155 @@ public class Board extends BlockMatrix {
         generatePiece();
     }
 
-    public void generatePiece() {
+    public void resizePorDefeito(int lines, int columns) {
+        this.matrix = new Block[lines][columns];
+        for (int y = 0; y < matrix.length; y++) {
+            for (int x = 0; x < matrix[y].length; x++) {
+                matrix[y][x] = new Empty();
+            }
+        }
+        generateRandomPiece();
+    }
+
+    public void generateRandomPiece() {
         Random rnd = new Random();
         //cria a peça sependendo do número aleatórioF
         switch (rnd.nextInt(7)) {
             case 0:
                 this.current = new PieceI();
-
                 break;
             case 1:
                 this.current = new PieceJ();
-
                 break;
             case 2:
                 this.current = new PieceL();
                 break;
             case 3:
                 this.current = new PieceO();
-
                 break;
             case 4:
                 this.current = new PieceS();
                 break;
             case 5:
                 this.current = new PieceT();
-
                 break;
             case 6:
                 this.current = new PieceZ();
-
                 break;
             default:
                 this.current = new PieceZ();
+        }
+    }
+
+    public void generatePiece() {
+        //verififica se o nível escolhdio pelo jogado foi o nível "EASY"
+        if (this.level == Difficulty.EASY) {
+            //Gerar número aleatório entre 1 (inclusivo) e 100(inclusivo)
+            Random r = new Random();
+            int low = 1;
+            int high = 101;
+            //Número aleatório
+            int result = r.nextInt(high - low) + low;
+            //Se o número aleatório estiver no intervalo [1,20], cria uma peça I
+            if (result >= 1 && result <= 20) {
+                this.current = new PieceI(colors.getIColor());
+            } //Se o número aleatório estiver no intervalo [21,34], cria uma peça L
+            else if (result >= 21 && result <= 34) {
+                this.current = new PieceL(colors.getLColor());
+            } //Se o número aleatório estiver no intervalo [35,48], cria uma peça J
+            else if (result >= 35 && result <= 48) {
+                this.current = new PieceJ(colors.getJColor());
+            } //Se o número aleatório estiver no intervalo [49,66], cria uma peça O
+            else if (result >= 49 && result <= 66) {
+                this.current = new PieceO(colors.getOColor());
+            } //Se o número aleatório estiver no intervalo [67,80], cria uma peça T
+            else if (result >= 67 && result <= 80) {
+                this.current = new PieceT(colors.getTColor());
+            } //Se o número aleatório estiver no intervalo [81, 90], cria uma peça Z
+            else if (result >= 81 && result <= 90) {
+                this.current = new PieceZ(colors.getZColor());
+            } //Se o número aleatório estiver no intervalo [91,100], cria uma peça S
+            else if (result >= 91 && result <= 100) {
+                this.current = new PieceS(colors.getSColor());
+            } //Se houver algum problema ao gerar o número aleatório e ele for menor que 0 ou maior que 100, vai ser criada a peça I
+            else {
+                this.current = new PieceI(colors.getIColor());
+            }
+        }
+
+        //verififica se o nível escolhdio pelo jogado foi o nível "NORMAL"
+        if (this.level == Difficulty.NORMAL) {
+            //gerador de números aleatórios
+            Random rnd = new Random();
+            //cria a peça sependendo do número aleatórioF
+            switch (rnd.nextInt(7)) {
+                case 0:
+                    this.current = new PieceI(colors.getIColor());
+                    break;
+                case 1:
+                    this.current = new PieceJ(colors.getJColor());
+                    break;
+                case 2:
+                    this.current = new PieceL(colors.getLColor());
+                    break;
+                case 3:
+                    this.current = new PieceO(colors.getOColor());
+                    break;
+                case 4:
+                    this.current = new PieceS(colors.getSColor());
+                    break;
+                case 5:
+                    this.current = new PieceT(colors.getTColor());
+                    break;
+                case 6:
+                    this.current = new PieceZ(colors.getZColor());
+                    break;
+                default:
+                    this.current = new PieceZ(colors.getZColor());
+            }
 
         }
-        this.current.setColumn(getColumns() / 2 - current.getColumns()
-                / 2);
-        //top of the board
-        this.current.setLine(0);
-        repaint();
+        //verififica se o nível escolhdio pelo jogado foi o nível "DIFFICULT"
+        if (this.level == Difficulty.DIFFICULT) {
+            //Gerar número aleatório entre 1 (inclusivo) e 100(inclusivo)
+            Random r = new Random();
+            int low = 1;
+            int high = 101;
+            //Número aleatório
+            int result = r.nextInt(high - low) + low;
+            //Se o número aleatório estiver no intervalo [1,8], cria uma peça I
+            if (result >= 1 && result <= 8) {
+                this.current = new PieceI(colors.getIColor());
+            } //Se o número aleatório estiver no intervalo [8,20], cria uma peça L
+            else if (result >= 9 && result <= 20) {
+                this.current = new PieceL(colors.getLColor());
+            } //Se o número aleatório estiver no intervalo [20,32], cria uma peça J
+            else if (result >= 21 && result <= 32) {
+                this.current = new PieceJ(colors.getJColor());
+            } //Se o número aleatório estiver no intervalo [33,42], cria uma peça O
+            else if (result >= 33 && result <= 42) {
+                this.current = new PieceO(colors.getOColor());
+            } //Se o número aleatório estiver no intervalo [43,56], cria uma peça T
+            else if (result >= 43 && result <= 56) {
+                this.current = new PieceT(colors.getTColor());
+            } //Se o número aleatório estiver no intervalo [56, 78], cria uma peça Z
+            else if (result >= 56 && result <= 78) {
+                this.current = new PieceZ(colors.getZColor());
+            } //Se o número aleatório estiver no intervalo [79,100], cria uma peça S
+            else if (result >= 79 && result <= 100) {
+                this.current = new PieceS(colors.getSColor());
+            } //Se houver algum problema ao gerar o número aleatório e ele for menor que 0 ou maior que 100, vai ser criada a peça S
+            else {
+                this.current = new PieceS(colors.getSColor());
+            }
+        }
+        if (current != null) {
+            this.current.setColumn(getColumns() / 2 - current.getColumns() / 2);
+            //top of the board
+            this.current.setLine(0);
+            repaint();
+        }
     }
-//    public void generatePiece() {
-//        //verififica se o nível escolhdio pelo jogado foi o nível "EASY"
-//        if (this.level == Difficulty.EASY) {
-//            //Gerar número aleatório entre 1 (inclusivo) e 100(inclusivo)
-//            Random r = new Random();
-//            int low = 1;
-//            int high = 101;
-//            //Número aleatório
-//            int result = r.nextInt(high - low) + low;
-//            //Se o número aleatório estiver no intervalo [1,20], cria uma peça I
-//            if (result >= 1 && result <= 20) {
-//                this.current = new PieceI();
-//            } //Se o número aleatório estiver no intervalo [21,34], cria uma peça L
-//            else if (result >= 21 && result <= 34) {
-//                this.current = new PieceL();
-//            } //Se o número aleatório estiver no intervalo [35,48], cria uma peça J
-//            else if (result >= 35 && result <= 48) {
-//                this.current = new PieceJ();
-//            } //Se o número aleatório estiver no intervalo [49,66], cria uma peça O
-//            else if (result >= 49 && result <= 66) {
-//                this.current = new PieceO();
-//            } //Se o número aleatório estiver no intervalo [67,80], cria uma peça T
-//            else if (result >= 67 && result <= 80) {
-//                this.current = new PieceT();
-//            } //Se o número aleatório estiver no intervalo [81, 90], cria uma peça Z
-//            else if (result >= 81 && result <= 90) {
-//                this.current = new PieceZ();
-//            } //Se o número aleatório estiver no intervalo [91,100], cria uma peça S
-//            else if (result >= 91 && result <= 100) {
-//                this.current = new PieceS();
-//            } //Se houver algum problema ao gerar o número aleatório e ele for menor que 0 ou maior que 100, vai ser criada a peça I
-//            else {
-//                this.current = new PieceI();
-//            }
-//        }
-//
-//        //verififica se o nível escolhdio pelo jogado foi o nível "NORMAL"
-//        if (this.level == Difficulty.NORMAL) {
-//            //gerador de números aleatórios
-//            Random rnd = new Random();
-//            //cria a peça sependendo do número aleatórioF
-//            switch (rnd.nextInt(7)) {
-//                case 0:
-//                    this.current = new PieceI();
-//                    break;
-//                case 1:
-//                    this.current = new PieceJ();
-//                    break;
-//                case 2:
-//                    this.current = new PieceL();
-//                    break;
-//                case 3:
-//                    this.current = new PieceO();
-//                    break;
-//                case 4:
-//                    this.current = new PieceS();
-//                    break;
-//                case 5:
-//                    this.current = new PieceT();
-//                    break;
-//                case 6:
-//                    this.current = new PieceZ();
-//                    break;
-//                default:
-//                    this.current = new PieceZ();
-//            }
-//
-//        }
-//        //verififica se o nível escolhdio pelo jogado foi o nível "DIFFICULT"
-//        if (this.level == Difficulty.DIFFICULT) {
-//            //Gerar número aleatório entre 1 (inclusivo) e 100(inclusivo)
-//            Random r = new Random();
-//            int low = 1;
-//            int high = 101;
-//            //Número aleatório
-//            int result = r.nextInt(high - low) + low;
-//            //Se o número aleatório estiver no intervalo [1,8], cria uma peça I
-//            if (result >= 1 && result <= 8) {
-//                this.current = new PieceI();
-//            } //Se o número aleatório estiver no intervalo [8,20], cria uma peça L
-//            else if (result >= 9 && result <= 20) {
-//                this.current = new PieceL();
-//            } //Se o número aleatório estiver no intervalo [20,32], cria uma peça J
-//            else if (result >= 21 && result <= 32) {
-//                this.current = new PieceJ();
-//            } //Se o número aleatório estiver no intervalo [33,42], cria uma peça O
-//            else if (result >= 33 && result <= 42) {
-//                this.current = new PieceO();
-//            } //Se o número aleatório estiver no intervalo [43,56], cria uma peça T
-//            else if (result >= 43 && result <= 56) {
-//                this.current = new PieceT();
-//            } //Se o número aleatório estiver no intervalo [56, 78], cria uma peça Z
-//            else if (result >= 56 && result <= 78) {
-//                this.current = new PieceZ();
-//            } //Se o número aleatório estiver no intervalo [79,100], cria uma peça S
-//            else if (result >= 79 && result <= 100) {
-//                this.current = new PieceS();
-//            } //Se houver algum problema ao gerar o número aleatório e ele for menor que 0 ou maior que 100, vai ser criada a peça S
-//            else {
-//                this.current = new PieceS();
-//            }
-//        }
-//        if (current != null) {
-//            this.current.setColumn(getColumns() / 2 - current.getColumns() / 2);
-//            //top of the board
-//            this.current.setLine(0);
-//            repaint();
-//        }
-//    }
 
     /**
      * Fixar a peça currente no tabuleiro      
